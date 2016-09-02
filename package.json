@@ -33,5 +33,8 @@
     "gulp-watch-path": "^0.1.0",
     "stream-combiner2": "^1.1.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "browser-sync": "^2.14.3",
+    "del": "^2.2.2"
+  }
 }

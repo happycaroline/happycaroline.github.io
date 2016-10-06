@@ -59,6 +59,8 @@ function init() {
 
     cloud = new Cloud();
     cloud.init();
+
+
 }
 
 function gameloop() {
@@ -67,9 +69,11 @@ function gameloop() {
     deltaTime = now - lastTime;
     lastTime = now;
     drawBg();
-    player.draw();
+    
     cloud.draw();
+    player.draw();
     cloudMonitor();
+    monitorCollsion();
 }
 
 function drawBg() {
@@ -77,12 +81,12 @@ function drawBg() {
 }
 
 function Player() {
-    this.width = 80;
-    this.height = 80;
+    this.width = 160;
+    this.height = 160;
     this.x = canWidth * 0.5 - this.width * 0.5;
-    this.y = canHeight - this.height * 2;
+    this.y = this.height * 2;
     this.pic = new Image();
-    this.orientation = 1;
+    this.orientation = -1;
 }
 
 Player.prototype.init = function () {
@@ -91,30 +95,42 @@ Player.prototype.init = function () {
 
 Player.prototype.draw = function () {
     this.y += 0.3 * deltaTime * this.orientation;
-    if (this.orientation < 0) {
-        if (this.y < 200) {
-            this.orientation = 1;
-        }
-    } else {
-        if (this.y > canHeight - this.height * 2) {
-            this.orientation = -1;
-        }
-    }
+    // if (this.orientation < 0) {
+    //     if (this.y < 600) {
+    //         this.orientation = 1;
+    //     }
+    // } else {
+    //     if (this.y > canHeight - this.height * 3) {
+    //         this.orientation = -1;
+    //     }
+    // }
 
     ctx.drawImage(this.pic, this.x, this.y, this.width, this.height);
 };
 
+Player.prototype.turn = function() {
+    this.orientation *= -1
+}
+
+Player.prototype.goUp = function () {
+
+}
+
+Player.prototype.goDown = function () {
+
+}
+
 Player.prototype.move = function (x) {
     if (x >= canWidth * 0.5) {
-        this.x += 1.2 * deltaTime;
+        this.x += 1.3 * deltaTime;
     } else {
-        this.x -= 1.2 * deltaTime;
+        this.x -= 1.3 * deltaTime;
     }
 };
 
 function Cloud() {
-    this.width = 90;
-    this.height = 30;
+    this.width = 180;
+    this.height = 60;
     this.x = [];
     this.y = [];
     this.alive = [];
@@ -142,23 +158,23 @@ Cloud.prototype.come = function (i) {
     this.y[i] = 10;
     this.alive[i] = true;
     var ran = Math.random();
-	if(ran < 0.5){
-		this.cloudType[i] = 'left';
-	} else {
-		this.cloudType[i] = 'right';
-	}
+    if(ran < 0.5){
+        this.cloudType[i] = 'left';
+    } else {
+        this.cloudType[i] = 'right';
+    }
 };
 
 Cloud.prototype.draw = function () {
     for (var i = 0; i < this.num; i++) {
         if (this.alive[i]) {
-        	var pic;
-			if (this.cloudType[i] == 'left') {
-				pic = this.leftPic;
-			} else {
-				pic = this.rightPic;
-			}
-            this.y[i] += 0.1 * deltaTime;
+            var pic;
+            if (this.cloudType[i] == 'left') {
+                pic = this.leftPic;
+            } else {
+                pic = this.rightPic;
+            }
+            //this.y[i] += 0.1 * deltaTime;
             ctx.drawImage(pic, this.x[i], this.y[i], this.width, this.height);
 
             if (this.y[i] > canHeight - this.height * 2) {
@@ -168,6 +184,16 @@ Cloud.prototype.draw = function () {
 
     }
 };
+
+Cloud.prototype.moveDown = function () {
+    for (var i = 0; i < this.num; i++) {
+        if (this.alive[i]) {
+            this.y[i] += 0.1 * deltaTime;
+            
+        }
+
+    }
+}
 
 function cloudMonitor() {
     var screenNum = 0;
@@ -298,3 +324,25 @@ window.requestAnimFrame = (function () {
             return window.setTimeout(callback, 1000 / 60);
         };
 })();
+
+function monitorCollsion () {
+    if(player.orientation == 1){
+
+        for (var i = 0; i < cloud.num; i++) {
+            if(cloud.alive[i] && Math.abs(player.y - cloud.y[i]) < 1) {
+                if( cloud.x[i] < player.x && player.x < cloud.x[i] + 180)
+                {
+                    player.turn();
+                }
+
+            }
+        }
+        
+    } else {
+        cloud.moveDown();
+        if(player.y < canHeight - player.height * 2){
+            player.turn();
+        }
+    }
+    
+}

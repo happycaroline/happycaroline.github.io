@@ -244,7 +244,8 @@ function init() {
 	  }
 	};
 
-	(new Orientation()).init();
+	var orien = new Orientation();
+	orien.init();
 
 
 	//Accelerations produces when the user hold the keys
@@ -532,8 +533,8 @@ function playerJump() {
 	player.dir = "right";
 	if (player.vy < -7 && player.vy > -15) player.dir = "right_land";
   }
-  (new Orientation()).init();
-
+  var orien = new Orientation();
+	orien.init();
   //Adding keyboard controls
   document.onkeydown = function(e) {
 	var key = e.keyCode;
@@ -625,51 +626,48 @@ menuLoop = function() {
 
 menuLoop();
 
-function Orientation(selector) {
-
-}
-
-Orientation.prototype.init = function () {
-	window.addEventListener('deviceorientation', this.orientationListener, false);
-	window.addEventListener('MozOrientation', this.orientationListener, false);
-	window.addEventListener('devicemotion', this.orientationListener, false);
-};
-
-Orientation.prototype.orientationListener = function (evt) {
-	// For FF3.6+
-	if (!evt.gamma && !evt.beta) {
-		// angle=radian*180.0/PI 在firefox中x和y是弧度值,
-		evt.gamma = (evt.x * (180 / Math.PI)); //转换成角度值,
-		evt.beta = (evt.y * (180 / Math.PI)); //转换成角度值
-		evt.alpha = (evt.z * (180 / Math.PI)); //转换成角度值
-	}
-	/* beta:  -180..180 (rotation around x axis) */
-	/* gamma:  -90..90  (rotation around y axis) */
-	/* alpha:    0..360 (rotation around z axis) (-180..180) */
-
-	var gamma = evt.gamma;
-	var beta = evt.beta;
-	var alpha = evt.alpha;
-
-	if (evt.accelerationIncludingGravity) {
-		// window.removeEventListener('deviceorientation', this.orientationListener, false);
-		gamma = event.accelerationIncludingGravity.x * 10;
-		beta = -event.accelerationIncludingGravity.y * 10;
-		alpha = event.accelerationIncludingGravity.z * 10;
+function Orientation() {
+	this.init = function(){
+		window.addEventListener('deviceorientation', this.orientationListener, false);
+		window.addEventListener('MozOrientation', this.orientationListener, false);
+		window.addEventListener('devicemotion', this.orientationListener, false);
 	}
 
-	if (this._lastGamma != gamma) {
-		if (gamma < 0) {
-		dir = "left";
-		player.isMovingLeft = false;
-		} else if (gamma > 0) {
-			dir = "right";
-			player.isMovingRight = false;
+	this.orientationListener = function (evt) {
+		// For FF3.6+
+		if (!evt.gamma && !evt.beta) {
+			// angle=radian*180.0/PI 在firefox中x和y是弧度值,
+			evt.gamma = (evt.x * (180 / Math.PI)); //转换成角度值,
+			evt.beta = (evt.y * (180 / Math.PI)); //转换成角度值
+			evt.alpha = (evt.z * (180 / Math.PI)); //转换成角度值
 		}
-		this._lastGamma = gamma;
-	}
-};
+		/* beta:  -180..180 (rotation around x axis) */
+		/* gamma:  -90..90  (rotation around y axis) */
+		/* alpha:    0..360 (rotation around z axis) (-180..180) */
 
+		var gamma = evt.gamma;
+		var beta = evt.beta;
+		var alpha = evt.alpha;
+
+		if (evt.accelerationIncludingGravity) {
+			// window.removeEventListener('deviceorientation', this.orientationListener, false);
+			gamma = event.accelerationIncludingGravity.x * 10;
+			beta = -event.accelerationIncludingGravity.y * 10;
+			alpha = event.accelerationIncludingGravity.z * 10;
+		}
+
+		if (this._lastGamma != gamma) {
+			if (gamma < 0) {
+			dir = "left";
+			player.isMovingLeft = false;
+			} else if (gamma > 0) {
+				dir = "right";
+				player.isMovingRight = false;
+			}
+			this._lastGamma = gamma;
+		}
+	}
+}
 
 function initWechat () {
 	var nonceStr = 'abcdefg';

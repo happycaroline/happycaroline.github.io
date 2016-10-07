@@ -24,7 +24,8 @@ var platforms = [],
 	animloop,
 	flag = 0,
 	menuloop, broken = 0,
-	dir, score = 0, firstRun = true;
+	dir, score = 0, firstRun = true,
+	clientX;
 
 //基准线
 var Base = function () {
@@ -196,12 +197,11 @@ function init() {
 	//Adding keyboard controls
 	$('#canvas').on('touchstart', function(e){
 		var x = e.originalEvent.changedTouches[0].clientX;
+		clientX = x + '    ' + width * 0.5
 		if(x < width * 0.5){
-			console.log(x + ' 1 '+ width * 0.5);
 			dir = "left";
 			player.isMovingLeft = true;
 		} else{
-			console.log(x + ' 2 '+ width * 0.5);
 			dir = "right";
 			player.isMovingRight = true;
 		}
@@ -209,12 +209,11 @@ function init() {
 
 	$('#canvas').on('touchend', function(e){
 		var x = e.originalEvent.changedTouches[0].clientX;
+		clientX = x + '    ' + width * 0.5
 		if(x < width * 0.5){
-			console.log(x + ' 3 '+ width * 0.5);
 			dir = "left";
 		player.isMovingLeft = false;
 		} else{
-			console.log(x + ' 4 '+ width * 0.5);
 			dir = "right";
 		player.isMovingRight = false;
 		}
@@ -243,10 +242,6 @@ function init() {
 		player.isMovingRight = false;
 	  }
 	};
-
-	var orien = new Orientation();
-	orien.init();
-
 
 	//Accelerations produces when the user hold the keys
 	if (player.isMovingLeft === true) {
@@ -395,7 +390,7 @@ function collides() {
 
   function updateScore() {
 	var scoreText = document.getElementById("score");
-	scoreText.innerHTML = score + ' m';
+	scoreText.innerHTML = score + ' m' + clientX;
   }
 
   function gameOver() {
@@ -533,8 +528,7 @@ function playerJump() {
 	player.dir = "right";
 	if (player.vy < -7 && player.vy > -15) player.dir = "right_land";
   }
-  var orien = new Orientation();
-	orien.init();
+
   //Adding keyboard controls
   document.onkeydown = function(e) {
 	var key = e.keyCode;

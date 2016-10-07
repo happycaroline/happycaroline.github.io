@@ -95,11 +95,12 @@ Player.prototype.init = function () {
 
 Player.prototype.draw = function () {
     this.y += 0.3 * deltaTime * this.orientation;
-    // if (this.orientation < 0) {
-    //     if (this.y < 600) {
-    //         this.orientation = 1;
-    //     }
-    // } else {
+    if (this.orientation < 0) {
+        if (this.y < 300) {
+            this.orientation = 1;
+        }
+    } 
+    // else {
     //     if (this.y > canHeight - this.height * 3) {
     //         this.orientation = -1;
     //     }
@@ -122,9 +123,15 @@ Player.prototype.goDown = function () {
 
 Player.prototype.move = function (x) {
     if (x >= canWidth * 0.5) {
-        this.x += 1.3 * deltaTime;
+        this.x += 10 * deltaTime;
+        if(this.x > canWidth - 230){
+            this.x = canWidth - 230;
+        }
     } else {
-        this.x -= 1.3 * deltaTime;
+        this.x -= 10 * deltaTime;
+        if(this.x < 0){
+            this.x = 0;
+        }
     }
 };
 
@@ -329,23 +336,21 @@ function monitorCollsion () {
     if(player.orientation == 1){
 
         for (var i = 0; i < cloud.num; i++) {
+            
             if(cloud.alive[i] && Math.abs(player.y + 212  - cloud.y[i]) < 1) {
-            if( cloud.x[i] < player.x && player.x + 130 < cloud.x[i] + 180)
-                {
-                    player.turn();
-                    console.log(cloud.y + ' ' + player.y);
-                }
+                console.log( Math.abs(player.y + 212  - cloud.y[i])  + ' ' + i);
+                player.orientation = -1;
+            // if( cloud.x[i] < player.x && player.x + 130 < cloud.x[i] + 180)
+            //     {
+            //         player.orientation = -1;
+            //         console.log(player.y + 212  - cloud.y[i]);
+            //     }
 
             }
         }
         
     } else {
         cloud.moveDown();
-        if(player.y < canHeight - player.height * 2){
-            player.turn();
-
-            console.log(cloud.y + ' ' + player.y);
-        }
     }
     
 }

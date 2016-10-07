@@ -220,7 +220,7 @@ function init() {
   }
 
   //Player related calculations and functions
-
+  initWechat
   function playerCalc() {
     if (dir == "left") {
       player.dir = "left";
@@ -642,3 +642,62 @@ Orientation.prototype.orientationListener = function (evt) {
         alert(gamma)
     }
 };
+
+
+function initWechat () {
+    var nonceStr = 'abcdefg';
+    var timestamp = '1474961111318';
+    var locationUrl = location.origin + location.pathname + location.search;
+    var shareLogo = 'https://www.iqunxing.com/minisites/metersbonwe/imgs/wechart-logo.png';
+    var optionBase = {
+        title: '重阳登高，登上人生巅峰，不服来战',
+        desc: '重阳登高，登上人生巅峰，不服来战',
+        link: location.href,
+        imgUrl: 'https://www.iqunxing.com/minisites/midautumn/imgs/share.jpg'
+    };
+
+    var optionTimeline = $.extend(optionBase, { success: function () {
+        try {
+            TDAPP.onEvent('微信分享－朋友圈');
+        } catch (e) {}
+    } });
+
+    var optionAppMessage = $.extend(optionBase, { success: function () {
+            try {
+                TDAPP.onEvent('微信分享－朋友');
+            } catch (e) {}
+        } });
+
+    var optionQQ = $.extend(optionBase, { success: function () {
+            try {
+                TDAPP.onEvent('微信分享－QQ');
+            } catch (e) {}
+        } });
+
+    $.ajax({
+        url: '/services/public/mobile/getWechatSignature',
+        type: 'POST',
+        data: {
+            nonceStr: nonceStr,
+            timestamp: timestamp,
+            url: locationUrl
+        },
+        success: function (resp) {
+            wx.config({
+                debug: false,
+                appId: 'wx5b8b94317c7511eb',
+                timestamp: timestamp,
+                nonceStr: nonceStr,
+                signature: resp.result.signature,
+                jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ']
+            });
+        }
+    });
+
+    wx.ready(function () {
+        var link = locationUrl;
+        wx.onMenuShareTimeline(optionTimeline);
+        wx.onMenuShareAppMessage(optionAppMessage);
+        wx.onMenuShareAppMessage(optionQQ);
+    });
+}

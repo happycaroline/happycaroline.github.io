@@ -2,7 +2,7 @@
 window.requestAnimFrame = (function() {
   return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
   function(callback) {
-    window.setTimeout(callback, 1000 / 60);
+	window.setTimeout(callback, 1000 / 60);
   };
 })();
 
@@ -49,8 +49,8 @@ var Player = function() {
   this.isDead = false;
 
 
-    this.width = 260;
-    this.height = 212;
+	this.width = 260;
+	this.height = 212;
 
 
   this.dir = "left";
@@ -62,17 +62,17 @@ var Player = function() {
 
   //Function to draw it
   this.draw = function() {
-    try {
-      ctx.drawImage(this.pic, this.x, this.y, this.width, this.height);
-    } catch (e) {}
+	try {
+	  ctx.drawImage(this.pic, this.x, this.y, this.width, this.height);
+	} catch (e) {}
   };
 
   this.jump = function() {
-    this.vy = -16;
+	this.vy = -16;
   };
 
   this.jumpHigh = function() {
-    this.vy = -32;
+	this.vy = -32;
   };
 
 };
@@ -105,18 +105,18 @@ function Platform() {
 
   //Function to draw it
   this.draw = function() {
-    try {
-      var pic;
-      if (this.type == 1) pic = this.picLeft;
-      else if (this.type == 2) pic = this.picRight;
-      else if (this.type == 3 && this.flag === 0) pic = this.picBroke;
-      else if (this.type == 3 && this.flag == 1) pic = this.picNone;
-      else if (this.type == 4 && this.state === 0) pic = this.picOnce;
-      else if (this.type == 4 && this.state == 1) pic = this.picNone;
+	try {
+	  var pic;
+	  if (this.type == 1) pic = this.picLeft;
+	  else if (this.type == 2) pic = this.picRight;
+	  else if (this.type == 3 && this.flag === 0) pic = this.picBroke;
+	  else if (this.type == 3 && this.flag == 1) pic = this.picNone;
+	  else if (this.type == 4 && this.state === 0) pic = this.picOnce;
+	  else if (this.type == 4 && this.state == 1) pic = this.picNone;
 
-      ctx.drawImage(pic, this.x, this.y, this.width, this.height);
-      //ctx.drawImage(image, this.cx, this.cy, this.cwidth, this.cheight, this.x, this.y, this.width, this.height);
-    } catch (e) {}
+	  ctx.drawImage(pic, this.x, this.y, this.width, this.height);
+	  //ctx.drawImage(image, this.cx, this.cy, this.cwidth, this.cheight, this.x, this.y, this.width, this.height);
+	} catch (e) {}
   };
 
   //Platform types
@@ -136,10 +136,10 @@ function Platform() {
 
   //We can't have two consecutive breakable platforms otherwise it will be impossible to reach another platform sometimes!
   if (this.type == 3 && broken < 1) {
-    broken++;
+	broken++;
   } else if (this.type == 3 && broken >= 1) {
-    this.type = 1;
-    broken = 0;
+	this.type = 1;
+	broken = 0;
   }
 
   this.moved = 0;
@@ -169,10 +169,10 @@ var Platform_broken_substitute = function() {
   this.pic.src = 'imgs/broken.png'
 
   this.draw = function() {
-    try {
-      if (this.appearance === true) ctx.drawImage(this.pic, this.x, this.y, this.width, this.height);
-      else return;
-    } catch (e) {}
+	try {
+	  if (this.appearance === true) ctx.drawImage(this.pic, this.x, this.y, this.width, this.height);
+	  else return;
+	} catch (e) {}
   };
 };
 
@@ -195,12 +195,12 @@ var spring = function() {
   this.state = 0;
 
   this.draw = function() {
-    try {
-      if (this.state === 0) this.cy = 445;
-      else if (this.state == 1) this.cy = 501;
+	try {
+	  if (this.state === 0) this.cy = 445;
+	  else if (this.state == 1) this.cy = 501;
 
-      ctx.drawImage(image, this.cx, this.cy, this.cwidth, this.cheight, this.x, this.y, this.width, this.height);
-    } catch (e) {}
+	  ctx.drawImage(image, this.cx, this.cy, this.cwidth, this.cheight, this.x, this.y, this.width, this.height);
+	} catch (e) {}
   };
 };
 
@@ -209,247 +209,268 @@ var Spring = new spring();
 function init() {
   //Variables for the game
   var dir = "left",
-    jumpCount = 0;
+	jumpCount = 0;
   
   firstRun = false;
 
   //Function for clearing canvas in each consecutive frame
 
   function paintCanvas() {
-    ctx.clearRect(0, 0, width, height);
+	ctx.clearRect(0, 0, width, height);
   }
 
   //Player related calculations and functions
   //initWechat();
   function playerCalc() {
-    if (dir == "left") {
-      player.dir = "left";
-      if (player.vy < -7 && player.vy > -15) player.dir = "left_land";
-    } else if (dir == "right") {
-      player.dir = "right";
-      if (player.vy < -7 && player.vy > -15) player.dir = "right_land";
-    }
+	if (dir == "left") {
+	  player.dir = "left";
+	  if (player.vy < -7 && player.vy > -15) player.dir = "left_land";
+	} else if (dir == "right") {
+	  player.dir = "right";
+	  if (player.vy < -7 && player.vy > -15) player.dir = "right_land";
+	}
 
-    //Adding keyboard controls
-    document.onkeydown = function(e) {
-      var key = e.keyCode;
-      
-      if (key == 37) {
-        dir = "left";
-        player.isMovingLeft = true;
-      } else if (key == 39) {
-        dir = "right";
-        player.isMovingRight = true;
-      }
-    };
+	//Adding keyboard controls
+	$('#canvas').on('touchstart', function(e){
+		var x = e.originalEvent.changedTouches[0].clientX;
+		if(x < width * 0.5){
+			dir = "left";
+			player.isMovingLeft = true;
+		} else{
+			dir = "right";
+			player.isMovingRight = true;
+		}
+	})
+
+	$('#canvas').on('touchend', function(e){
+		var x = e.originalEvent.changedTouches[0].clientX;
+		if(x < width * 0.5){
+			dir = "left";
+		player.isMovingLeft = false;
+		} else{
+			dir = "right";
+		player.isMovingRight = false;
+		}
+	})
+	document.onkeydown = function(e) {
+	  var key = e.keyCode;
+	  
+	  if (key == 37) {
+		dir = "left";
+		player.isMovingLeft = true;
+	  } else if (key == 39) {
+		dir = "right";
+		player.isMovingRight = true;
+	  }
+	};
 
 
-    document.onkeyup = function(e) {
-      var key = e.keyCode;
-    
-      if (key == 37) {
-        dir = "left";
-        player.isMovingLeft = false;
-      } else if (key == 39) {
-        dir = "right";
-        player.isMovingRight = false;
-      }
-    };
+	document.onkeyup = function(e) {
+	  var key = e.keyCode;
+	
+	  if (key == 37) {
+		dir = "left";
+		player.isMovingLeft = false;
+	  } else if (key == 39) {
+		dir = "right";
+		player.isMovingRight = false;
+	  }
+	};
 
-    (new Orientation()).init();
+	(new Orientation()).init();
 
 
-    //Accelerations produces when the user hold the keys
-    if (player.isMovingLeft === true) {
-      player.x += player.vx;
-      player.vx -= 0.15;
-    } else {
-      player.x += player.vx;
-      if (player.vx < 0) player.vx += 0.1;
-    }
+	//Accelerations produces when the user hold the keys
+	if (player.isMovingLeft === true) {
+	  player.x += player.vx;
+	  player.vx -= 0.15;
+	} else {
+	  player.x += player.vx;
+	  if (player.vx < 0) player.vx += 0.1;
+	}
 
-    if (player.isMovingRight === true) {
-      player.x += player.vx;
-      player.vx += 0.15;
-    } else {
-      player.x += player.vx;
-      if (player.vx > 0) player.vx -= 0.1;
-    }
+	if (player.isMovingRight === true) {
+	  player.x += player.vx;
+	  player.vx += 0.15;
+	} else {
+	  player.x += player.vx;
+	  if (player.vx > 0) player.vx -= 0.1;
+	}
 
-    // Speed limits!
-    if(player.vx > 8)
-      player.vx = 8;
-    else if(player.vx < -8)
-      player.vx = -8;
+	// Speed limits!
+	if(player.vx > 8)
+	  player.vx = 8;
+	else if(player.vx < -8)
+	  player.vx = -8;
 
-    //console.log(player.vx);
-    
-    //Jump the player when it hits the base
-    if ((player.y + player.height) > base.y && base.y < height) player.jump();
+	//console.log(player.vx);
+	
+	//Jump the player when it hits the base
+	if ((player.y + player.height) > base.y && base.y < height) player.jump();
 
-    //Gameover if it hits the bottom 
-    if (base.y > height && (player.y + player.height) > height && player.isDead != "lol") player.isDead = true;
+	//Gameover if it hits the bottom 
+	if (base.y > height && (player.y + player.height) > height && player.isDead != "lol") player.isDead = true;
 
-    //Make the player move through walls
-    if (player.x > width) player.x = 0 - player.width;
-    else if (player.x < 0 - player.width) player.x = width;
+	//Make the player move through walls
+	if (player.x > width) player.x = 0 - player.width;
+	else if (player.x < 0 - player.width) player.x = width;
 
-    //Movement of player affected by gravity
-    if (player.y >= (height / 2) - (player.height / 2)) {
-      player.y += player.vy;
-      player.vy += gravity;
-    }
+	//Movement of player affected by gravity
+	if (player.y >= (height / 2) - (player.height / 2)) {
+	  player.y += player.vy;
+	  player.vy += gravity;
+	}
 
-    //When the player reaches half height, move the platforms to create the illusion of scrolling and recreate the platforms that are out of viewport...
-    else {
-      platforms.forEach(function(p, i) {
+	//When the player reaches half height, move the platforms to create the illusion of scrolling and recreate the platforms that are out of viewport...
+	else {
+	  platforms.forEach(function(p, i) {
 
-        if (player.vy < 0) {
-          p.y -= player.vy;
-        }
+		if (player.vy < 0) {
+		  p.y -= player.vy;
+		}
 
-        if (p.y > height) {
-          platforms[i] = new Platform();
-          platforms[i].y = p.y - height;
-        }
+		if (p.y > height) {
+		  platforms[i] = new Platform();
+		  platforms[i].y = p.y - height;
+		}
 
-      });
+	  });
 
-      base.y -= player.vy;
-      player.vy += gravity;
+	  base.y -= player.vy;
+	  player.vy += gravity;
 
-      if (player.vy >= 0) {
-        player.y += player.vy;
-        player.vy += gravity;
-      }
+	  if (player.vy >= 0) {
+		player.y += player.vy;
+		player.vy += gravity;
+	  }
 
-      score++;
-    }
+	  score++;
+	}
 
-    //Make the player jump when it collides with platforms
-    collides();
+	//Make the player jump when it collides with platforms
+	collides();
 
-    if (player.isDead === true) gameOver();
+	if (player.isDead === true) gameOver();
   }
 
   //Spring algorithms
 
   function springCalc() {
-    var s = Spring;
-    var p = platforms[0];
+	var s = Spring;
+	var p = platforms[0];
 
-    if (p.type == 1 || p.type == 2) {
-      s.x = p.x + p.width / 2 - s.width / 2;
-      s.y = p.y - p.height - 10;
+	if (p.type == 1 || p.type == 2) {
+	  s.x = p.x + p.width / 2 - s.width / 2;
+	  s.y = p.y - p.height - 10;
 
-      if (s.y > height / 1.1) s.state = 0;
+	  if (s.y > height / 1.1) s.state = 0;
 
-      s.draw();
-    } else {
-      s.x = 0 - s.width;
-      s.y = 0 - s.height;
-    }
+	  s.draw();
+	} else {
+	  s.x = 0 - s.width;
+	  s.y = 0 - s.height;
+	}
   }
 
   //Platform's horizontal movement (and falling) algo
 
   function platformCalc() {
-    var subs = platform_broken_substitute;
+	var subs = platform_broken_substitute;
 
-    platforms.forEach(function(p, i) {
-      if (p.type == 2) {
-        if (p.x < 0 || p.x + p.width > width) p.vx *= -1;
+	platforms.forEach(function(p, i) {
+	  if (p.type == 2) {
+		if (p.x < 0 || p.x + p.width > width) p.vx *= -1;
 
-        p.x += p.vx;
-      }
+		p.x += p.vx;
+	  }
 
-      if (p.flag == 1 && subs.appearance === false && jumpCount === 0) {
-        subs.x = p.x;
-        subs.y = p.y;
-        subs.appearance = true;
+	  if (p.flag == 1 && subs.appearance === false && jumpCount === 0) {
+		subs.x = p.x;
+		subs.y = p.y;
+		subs.appearance = true;
 
-        jumpCount++;
-      }
+		jumpCount++;
+	  }
 
-      p.draw();
-    });
+	  p.draw();
+	});
 
-    if (subs.appearance === true) {
-      subs.draw();
-      subs.y += 8;
-    }
+	if (subs.appearance === true) {
+	  subs.draw();
+	  subs.y += 8;
+	}
 
-    if (subs.y > height) subs.appearance = false;
+	if (subs.y > height) subs.appearance = false;
   }
 
   function collides() {
-    //Platforms
-    platforms.forEach(function(p, i) {
-      if (player.vy > 0 && p.state === 0 && (player.x + 15 < p.x + p.width) && (player.x + player.width - 15 > p.x) && (player.y + player.height > p.y) && (player.y + player.height < p.y + p.height)) {
+	//Platforms
+	platforms.forEach(function(p, i) {
+	  if (player.vy > 0 && p.state === 0 && (player.x + 15 < p.x + p.width) && (player.x + player.width - 15 > p.x) && (player.y + player.height > p.y) && (player.y + player.height < p.y + p.height)) {
 
-        if (p.type == 3 && p.flag === 0) {
-          p.flag = 1;
-          jumpCount = 0;
-          return;
-        } else if (p.type == 4 && p.state === 0) {
-          player.jump();
-          p.state = 1;
-        } else if (p.flag == 1) return;
-        else {
-          player.jump();
-        }
-      }
-    });
+		if (p.type == 3 && p.flag === 0) {
+		  p.flag = 1;
+		  jumpCount = 0;
+		  return;
+		} else if (p.type == 4 && p.state === 0) {
+		  player.jump();
+		  p.state = 1;
+		} else if (p.flag == 1) return;
+		else {
+		  player.jump();
+		}
+	  }
+	});
 
-    //Springs
-    var s = Spring;
-    if (player.vy > 0 && (s.state === 0) && (player.x + 15 < s.x + s.width) && (player.x + player.width - 15 > s.x) && (player.y + player.height > s.y) && (player.y + player.height < s.y + s.height)) {
-      s.state = 1;
-      player.jumpHigh();
-    }
+	//Springs
+	var s = Spring;
+	if (player.vy > 0 && (s.state === 0) && (player.x + 15 < s.x + s.width) && (player.x + player.width - 15 > s.x) && (player.y + player.height > s.y) && (player.y + player.height < s.y + s.height)) {
+	  s.state = 1;
+	  player.jumpHigh();
+	}
 
   }
 
   function updateScore() {
-    var scoreText = document.getElementById("score");
-    scoreText.innerHTML = score + ' m';
+	var scoreText = document.getElementById("score");
+	scoreText.innerHTML = score + ' m';
   }
 
   function gameOver() {
-    platforms.forEach(function(p, i) {
-      p.y -= 12;
-    });
+	platforms.forEach(function(p, i) {
+	  p.y -= 12;
+	});
 
-    if(player.y > height/2 && flag === 0) {
-      player.y -= 8;
-      player.vy = 0;
-    } 
-    else if(player.y < height / 2) flag = 1;
-    else if(player.y + player.height > height) {
-      showGoMenu();
-      hideScore();
-      player.isDead = "lol";    
-    }
+	if(player.y > height/2 && flag === 0) {
+	  player.y -= 8;
+	  player.vy = 0;
+	} 
+	else if(player.y < height / 2) flag = 1;
+	else if(player.y + player.height > height) {
+	  showGoMenu();
+	  hideScore();
+	  player.isDead = "lol";    
+	}
   }
 
   //Function to update everything
 
   function update() {
-    paintCanvas();
-    platformCalc();
+	paintCanvas();
+	platformCalc();
 
-    springCalc();
+	springCalc();
 
-    playerCalc();
-    player.draw();
+	playerCalc();
+	player.draw();
 
-    updateScore();
+	updateScore();
   }
 
   menuLoop = function(){return;};
   animloop = function() {
-    update();
-    requestAnimFrame(animloop);
+	update();
+	requestAnimFrame(animloop);
   };
 
   animloop();
@@ -474,22 +495,22 @@ function reset() {
 
   platforms = [];
   for (var i = 0; i < platformCount; i++) {
-    platforms.push(new Platform());
+	platforms.push(new Platform());
   }
 }
 
 function share(){
-    hideGoMenu();
-    var menu = document.getElementById("shareMenu");
-      menu.style.zIndex = 1;
-      menu.style.visibility = "visible";
+	hideGoMenu();
+	var menu = document.getElementById("shareMenu");
+	  menu.style.zIndex = 1;
+	  menu.style.visibility = "visible";
 }
 
 function hideShare(){
-    showGoMenu();
-    var menu = document.getElementById("shareMenu");
-    menu.style.zIndex = -1;
-    menu.style.visibility = "hidden";
+	showGoMenu();
+	var menu = document.getElementById("shareMenu");
+	menu.style.zIndex = -1;
+	menu.style.visibility = "hidden";
 }
 
 //Hides the menu
@@ -506,6 +527,16 @@ function showGoMenu() {
 
   var scoreText = document.getElementById("go_score");
   scoreText.innerHTML = "恭喜你获得 " + score + " 株茱萸!";
+  //<img class="greet" src="imgs/greeta.svg" alt="">
+  var ran = Math.random()
+	if(ran < 0.33){
+		$('.greet').src = 'imgs/greeta.svg';
+	} else if(ran < 0.66) {
+		$('.greet').src = 'imgs/greetb.svg';
+	}  else {
+		$('.greet').src = 'imgs/greetc.svg';
+	}
+  
 }
 
 //Hides the game over menu
@@ -532,69 +563,69 @@ function playerJump() {
   player.vy += gravity;
 
   if (player.vy > 0 && 
-    (player.x + 15 < 260) && 
-    (player.x + player.width - 15 > 155) && 
-    (player.y + player.height > 475) && 
-    (player.y + player.height < 500))
-    player.jump();
+	(player.x + 15 < 260) && 
+	(player.x + player.width - 15 > 155) && 
+	(player.y + player.height > 475) && 
+	(player.y + player.height < 500))
+	player.jump();
 
   if (dir == "left") {
-    player.dir = "left";
-    if (player.vy < -7 && player.vy > -15) player.dir = "left_land";
+	player.dir = "left";
+	if (player.vy < -7 && player.vy > -15) player.dir = "left_land";
   } else if (dir == "right") {
-    player.dir = "right";
-    if (player.vy < -7 && player.vy > -15) player.dir = "right_land";
+	player.dir = "right";
+	if (player.vy < -7 && player.vy > -15) player.dir = "right_land";
   }
 
   //Adding keyboard controls
   document.onkeydown = function(e) {
-    var key = e.keyCode;
+	var key = e.keyCode;
 
-    if (key == 37) {
-      dir = "left";
-      player.isMovingLeft = true;
-    } else if (key == 39) {
-      dir = "right";
-      player.isMovingRight = true;
-    }
+	if (key == 37) {
+	  dir = "left";
+	  player.isMovingLeft = true;
+	} else if (key == 39) {
+	  dir = "right";
+	  player.isMovingRight = true;
+	}
   
-    if(key == 32) {
-      if(firstRun === true) {
-        init();
-        firstRun = false;
-      }
-      else 
-        reset();
-    }
+	if(key == 32) {
+	  if(firstRun === true) {
+		init();
+		firstRun = false;
+	  }
+	  else 
+		reset();
+	}
   };
 
   document.onkeyup = function(e) {
-    var key = e.keyCode;
+	var key = e.keyCode;
 
-    if (key == 37) {
-      dir = "left";
-      player.isMovingLeft = false;
-    } else if (key == 39) {
-      dir = "right";
-      player.isMovingRight = false;
-    }
+	if (key == 37) {
+	  dir = "left";
+	  player.isMovingLeft = false;
+	} else if (key == 39) {
+	  dir = "right";
+	  player.isMovingRight = false;
+	}
   };
 
   //Accelerations produces when the user hold the keys
   if (player.isMovingLeft === true) {
-    player.x += player.vx;
-    player.vx -= 0.15;
+	player.x += player.vx;
+	player.vx -= 0.15;
   } else {
-    player.x += player.vx;
-    if (player.vx < 0) player.vx += 0.1;
+	player.x += player.vx;
+	if (player.vx < 0) player.vx += 0.1;
   }
 
   if (player.isMovingRight === true) {
-    player.x += player.vx;
-    player.vx += 0.15;
+	player.x += player.vx;
+	player.vx += 0.15;
   } else {
-    player.x += player.vx;
-    if (player.vx > 0) player.vx -= 0.1;
+	player.x += player.vx;
+	if (player.vx > 0) player.vx -= 0.1;
   }
 
   //Jump the player when it hits the base
@@ -624,101 +655,101 @@ function Orientation(selector) {
 }
 
 Orientation.prototype.init = function () {
-    window.addEventListener('deviceorientation', this.orientationListener, false);
-    window.addEventListener('MozOrientation', this.orientationListener, false);
-    window.addEventListener('devicemotion', this.orientationListener, false);
+	window.addEventListener('deviceorientation', this.orientationListener, false);
+	window.addEventListener('MozOrientation', this.orientationListener, false);
+	window.addEventListener('devicemotion', this.orientationListener, false);
 };
 
 Orientation.prototype.orientationListener = function (evt) {
-    // For FF3.6+
-    if (!evt.gamma && !evt.beta) {
-        // angle=radian*180.0/PI 在firefox中x和y是弧度值,
-        evt.gamma = (evt.x * (180 / Math.PI)); //转换成角度值,
-        evt.beta = (evt.y * (180 / Math.PI)); //转换成角度值
-        evt.alpha = (evt.z * (180 / Math.PI)); //转换成角度值
-    }
-    /* beta:  -180..180 (rotation around x axis) */
-    /* gamma:  -90..90  (rotation around y axis) */
-    /* alpha:    0..360 (rotation around z axis) (-180..180) */
+	// For FF3.6+
+	if (!evt.gamma && !evt.beta) {
+		// angle=radian*180.0/PI 在firefox中x和y是弧度值,
+		evt.gamma = (evt.x * (180 / Math.PI)); //转换成角度值,
+		evt.beta = (evt.y * (180 / Math.PI)); //转换成角度值
+		evt.alpha = (evt.z * (180 / Math.PI)); //转换成角度值
+	}
+	/* beta:  -180..180 (rotation around x axis) */
+	/* gamma:  -90..90  (rotation around y axis) */
+	/* alpha:    0..360 (rotation around z axis) (-180..180) */
 
-    var gamma = evt.gamma;
-    var beta = evt.beta;
-    var alpha = evt.alpha;
+	var gamma = evt.gamma;
+	var beta = evt.beta;
+	var alpha = evt.alpha;
 
-    if (evt.accelerationIncludingGravity) {
-        // window.removeEventListener('deviceorientation', this.orientationListener, false);
-        gamma = event.accelerationIncludingGravity.x * 10;
-        beta = -event.accelerationIncludingGravity.y * 10;
-        alpha = event.accelerationIncludingGravity.z * 10;
-    }
+	if (evt.accelerationIncludingGravity) {
+		// window.removeEventListener('deviceorientation', this.orientationListener, false);
+		gamma = event.accelerationIncludingGravity.x * 10;
+		beta = -event.accelerationIncludingGravity.y * 10;
+		alpha = event.accelerationIncludingGravity.z * 10;
+	}
 
-    if (this._lastGamma != gamma) {
-        if (gamma < 0) {
-        dir = "left";
-        player.isMovingLeft = false;
-        } else if (gamma > 0) {
-            dir = "right";
-            player.isMovingRight = false;
-        }
-        this._lastGamma = gamma;
-    }
+	if (this._lastGamma != gamma) {
+		if (gamma < 0) {
+		dir = "left";
+		player.isMovingLeft = false;
+		} else if (gamma > 0) {
+			dir = "right";
+			player.isMovingRight = false;
+		}
+		this._lastGamma = gamma;
+	}
 };
 
 
 function initWechat () {
-    var nonceStr = 'abcdefg';
-    var timestamp = '1474961111318';
-    var locationUrl = location.origin + location.pathname + location.search;
-    var shareLogo = 'https://www.iqunxing.com/minisites/metersbonwe/imgs/wechart-logo.png';
-    var optionBase = {
-        title: '重阳登高，登上人生巅峰，不服来战',
-        desc: '重阳登高，登上人生巅峰，不服来战',
-        link: location.href,
-        imgUrl: 'https://www.iqunxing.com/minisites/midautumn/imgs/share.jpg'
-    };
+	var nonceStr = 'abcdefg';
+	var timestamp = '1474961111318';
+	var locationUrl = location.origin + location.pathname + location.search;
+	var shareLogo = 'https://www.iqunxing.com/minisites/metersbonwe/imgs/wechart-logo.png';
+	var optionBase = {
+		title: '重阳登高，登上人生巅峰，不服来战',
+		desc: '重阳登高，登上人生巅峰，不服来战',
+		link: location.href,
+		imgUrl: 'https://www.iqunxing.com/minisites/midautumn/imgs/share.jpg'
+	};
 
-    var optionTimeline = $.extend(optionBase, { success: function () {
-        try {
-            TDAPP.onEvent('微信分享－朋友圈');
-        } catch (e) {}
-    } });
+	var optionTimeline = $.extend(optionBase, { success: function () {
+		try {
+			TDAPP.onEvent('微信分享－朋友圈');
+		} catch (e) {}
+	} });
 
-    var optionAppMessage = $.extend(optionBase, { success: function () {
-            try {
-                TDAPP.onEvent('微信分享－朋友');
-            } catch (e) {}
-        } });
+	var optionAppMessage = $.extend(optionBase, { success: function () {
+			try {
+				TDAPP.onEvent('微信分享－朋友');
+			} catch (e) {}
+		} });
 
-    var optionQQ = $.extend(optionBase, { success: function () {
-            try {
-                TDAPP.onEvent('微信分享－QQ');
-            } catch (e) {}
-        } });
+	var optionQQ = $.extend(optionBase, { success: function () {
+			try {
+				TDAPP.onEvent('微信分享－QQ');
+			} catch (e) {}
+		} });
 
-    $.ajax({
-        url: '/services/public/mobile/getWechatSignature',
-        type: 'POST',
-        data: {
-            nonceStr: nonceStr,
-            timestamp: timestamp,
-            url: locationUrl
-        },
-        success: function (resp) {
-            wx.config({
-                debug: false,
-                appId: 'wx5b8b94317c7511eb',
-                timestamp: timestamp,
-                nonceStr: nonceStr,
-                signature: resp.result.signature,
-                jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ']
-            });
-        }
-    });
+	$.ajax({
+		url: '/services/public/mobile/getWechatSignature',
+		type: 'POST',
+		data: {
+			nonceStr: nonceStr,
+			timestamp: timestamp,
+			url: locationUrl
+		},
+		success: function (resp) {
+			wx.config({
+				debug: false,
+				appId: 'wx5b8b94317c7511eb',
+				timestamp: timestamp,
+				nonceStr: nonceStr,
+				signature: resp.result.signature,
+				jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ']
+			});
+		}
+	});
 
-    wx.ready(function () {
-        var link = locationUrl;
-        wx.onMenuShareTimeline(optionTimeline);
-        wx.onMenuShareAppMessage(optionAppMessage);
-        wx.onMenuShareAppMessage(optionQQ);
-    });
+	wx.ready(function () {
+		var link = locationUrl;
+		wx.onMenuShareTimeline(optionTimeline);
+		wx.onMenuShareAppMessage(optionAppMessage);
+		wx.onMenuShareAppMessage(optionQQ);
+	});
 }

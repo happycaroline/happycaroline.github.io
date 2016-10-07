@@ -18,6 +18,9 @@ canvas {
 	background: url(imgs/bg.jpg);
 	background-size: cover;
 }
+#sprite{
+	display: none;
+}
 
 #scoreBoard {
   width: 100%;
@@ -27,7 +30,6 @@ canvas {
   top: -3px;
   left: 0;
   z-index: -1;  
-  border-image: url(ground.png) 100 5 round;
 }
 
 #scoreBoard p {
@@ -82,7 +84,7 @@ h1 {
 
 h3 {
 		text-align: center;
-	margin: 350px 0 80px 0;
+	margin: 150px 0 80px 0;
 	color: #fff;
 	font-size: 65px;
 }
@@ -95,7 +97,7 @@ h3 a {color: #5a5816}
 	display: block;
 	text-decoration: none;
 	position: absolute;
-	top: 55%;
+	top: 42%;
 }
 .share{
 	background: url(imgs/share.png) 0 0 no-repeat;
@@ -106,18 +108,32 @@ h3 a {color: #5a5816}
 	right: 10%;
 }
 
-.info {position: absolute; right: 20px; bottom: 00px; margin: 0; color: green}
-
-.info .key {
-  width: 16px;
-  height: 16px;
-  background: url(sprite.png) no-repeat;
-  text-indent: -9999px;
-  display: inline-block;
+.QR{
+	    position: absolute;
+    text-align: center;
+    width: 100%;
+        display: block;
+    top: 74%;
+}
+#gameOverMenu .QR img{
+    width: 300px;
 }
 
-.info .key.left {background-position: -92px -621px;}
-.info .key.right {background-position: -92px -641px;}
+.QR h2{
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 70px;
+}
+
+.info {    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    margin: 0;
+    /* color: green; */
+    font-size: 40px;}
+
+
 	</style>
 </head>
 <body>
@@ -130,10 +146,7 @@ h3 a {color: #5a5816}
 	  <div id="mainMenu" onclick="init()">
 		
 		<p class="info">
-		  use
-		  <span class="key left">←</span>
-		  <span class="key right">→</span>
-		  to move and space to (re) start...
+		 	请轻触屏幕左右两侧控制群星小球
 		</p>
 	  </div>
 
@@ -142,9 +155,13 @@ h3 a {color: #5a5816}
 			<img class="greet" src="imgs/greeta.svg" alt="">
 			<a class="button restart" href="javascript:reset()"></a>
 			<a class="button share" href="javascript:share()"></a>
+			<div class="QR"> 
+                <img src="imgs/QR.png" alt="QR">
+                <h2>群星金融-让企业平等获得金融服务</h2>
+           </div>
 	  </div>
 	  <div id="shareMenu" onclick="hideShare()">
-	  请点击右上角分享
+			请点击右上角分享
 	  		<img src='imgs/arrow.png'/>
 	  </div>
 
@@ -154,6 +171,7 @@ h3 a {color: #5a5816}
 	  </div>
 
 	</div>
+	<img id="sprite" src="imgs/sprite.png"/>
 	<script src="jquery-2.1.4.min.js"></script>
 	<script src="index.js"></script>
 </body>

@@ -18,7 +18,7 @@ canvas.height = height;
 //控制游戏变量
 var platforms = [],
 	image = document.getElementById("sprite"),
-	player, platformCount = 10,
+	player, platformCount = 7,
 	position = 0,
 	gravity = 0.2,
 	animloop,
@@ -107,11 +107,11 @@ function Platform() {
 	//2: Moving 会移动的云向右
 	//3: Breakable 裂开的云
 	//4: Vanishable 
-	if (score >= 5000) this.types = [2, 3, 3, 3, 4, 4, 4, 4];
-	else if (score >= 2000 && score < 5000) this.types = [2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4];
-	else if (score >= 1000 && score < 2000) this.types = [2, 2, 2, 3, 3, 3, 3, 3];
-	else if (score >= 500 && score < 1000) this.types = [1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3];
-	else if (score >= 100 && score < 500) this.types = [1, 1, 1, 1, 2, 2];
+	if (score >= 500) this.types = [2, 3, 3, 3, 3, 3, 4, 3];
+	else if (score >= 400 && score < 500) this.types = [2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4];
+	else if (score >= 300 && score < 400) this.types = [2, 2, 2, 3, 3, 3, 3, 3];
+	else if (score >= 200 && score < 300) this.types = [1, 1, 3, 1, 3, 2, 2, 2, 2, 3, 3, 3, 3];
+	else if (score >= 100 && score < 200) this.types = [1, 2, 3, 3, 2, 2];
 	else this.types = [1];
 
 	this.type = this.types[Math.floor(Math.random() * this.types.length)];

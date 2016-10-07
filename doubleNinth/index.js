@@ -24,8 +24,7 @@ var platforms = [],
 	animloop,
 	flag = 0,
 	menuloop, broken = 0,
-	dir, score = 0, firstRun = true,
-	clientX;
+	dir, score = 0, firstRun = true;
 
 //基准线
 var Base = function () {
@@ -197,7 +196,6 @@ function init() {
 	//Adding keyboard controls
 	$('#canvas').on('touchstart', function(e){
 		var x = e.originalEvent.changedTouches[0].clientX;
-		clientX = x + '    ' + width * 0.5
 		if(x < width * 0.5){
 			dir = "left";
 			player.isMovingLeft = true;
@@ -209,7 +207,6 @@ function init() {
 
 	$('#canvas').on('touchend', function(e){
 		var x = e.originalEvent.changedTouches[0].clientX;
-		clientX = x + '    ' + width * 0.5
 		if(x < width * 0.5){
 			dir = "left";
 		player.isMovingLeft = false;
@@ -390,7 +387,7 @@ function collides() {
 
   function updateScore() {
 	var scoreText = document.getElementById("score");
-	scoreText.innerHTML = score + ' m' + clientX;
+	scoreText.innerHTML = score + ' m';
   }
 
   function gameOver() {
@@ -558,11 +555,9 @@ function playerJump() {
   $('#canvas').on('touchstart', function(e){
 		var x = e.originalEvent.changedTouches[0].clientX;
 		if(x < width * 0.5){
-			console.log(x + ' 1 '+ width * 0.5);
 			dir = "left";
 			player.isMovingLeft = true;
 		} else{
-			console.log(x + ' 2 '+ width * 0.5);
 			dir = "right";
 			player.isMovingRight = true;
 		}
@@ -571,13 +566,11 @@ function playerJump() {
 	$('#canvas').on('touchend', function(e){
 		var x = e.originalEvent.changedTouches[0].clientX;
 		if(x < width * 0.5){
-			console.log(x + ' 3 '+ width * 0.5);
 			dir = "left";
-		player.isMovingLeft = false;
+			player.isMovingLeft = false;
 		} else{
-			console.log(x + ' 4 '+ width * 0.5);
 			dir = "right";
-		player.isMovingRight = false;
+			player.isMovingRight = false;
 		}
 	})
 

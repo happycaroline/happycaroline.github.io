@@ -220,7 +220,7 @@ function init() {
   }
 
   //Player related calculations and functions
-  initWechat
+  //initWechat();
   function playerCalc() {
     if (dir == "left") {
       player.dir = "left";
@@ -478,6 +478,20 @@ function reset() {
   }
 }
 
+function share(){
+    hideGoMenu();
+    var menu = document.getElementById("shareMenu");
+      menu.style.zIndex = 1;
+      menu.style.visibility = "visible";
+}
+
+function hideShare(){
+    showGoMenu();
+    var menu = document.getElementById("shareMenu");
+    menu.style.zIndex = -1;
+    menu.style.visibility = "hidden";
+}
+
 //Hides the menu
 function hideMenu() {
   var menu = document.getElementById("mainMenu");
@@ -639,7 +653,14 @@ Orientation.prototype.orientationListener = function (evt) {
     }
 
     if (this._lastGamma != gamma) {
-        alert(gamma)
+        if (gamma < 0) {
+        dir = "left";
+        player.isMovingLeft = false;
+        } else if (gamma > 0) {
+            dir = "right";
+            player.isMovingRight = false;
+        }
+        this._lastGamma = gamma;
     }
 };
 

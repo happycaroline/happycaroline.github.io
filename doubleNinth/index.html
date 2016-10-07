@@ -15,8 +15,8 @@
 
 canvas {
   display: block;
-    background: url(imgs/bg.jpg);
-    background-size: cover;
+	background: url(imgs/bg.jpg);
+	background-size: cover;
 }
 
 #scoreBoard {
@@ -31,10 +31,10 @@ canvas {
 }
 
 #scoreBoard p {
-    font-size: 60px;
-    padding: 0;
-    line-height: 90px;
-    margin: 0 0 0 22px;
+	font-size: 60px;
+	padding: 0;
+	line-height: 90px;
+	margin: 0 0 0 22px;
 }
 
 #mainMenu{
@@ -42,7 +42,7 @@ canvas {
 	background-size: cover;
 }
 
-#mainMenu, #gameOverMenu {
+#mainMenu, #gameOverMenu, #shareMenu {
   height: 100%;
   width: 100%;
   text-align: center;
@@ -52,7 +52,19 @@ canvas {
   z-index: 2;
 }
 
-#gameOverMenu {
+#shareMenu{
+    text-align: center;
+    font-size: 70px;
+    padding-top: 300px;
+    color: #fff;
+}
+#shareMenu img{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+#gameOverMenu,#shareMenu {
   visibility: hidden;
   background-color: rgba(14, 14, 14, 0.38);
 }
@@ -69,21 +81,21 @@ h1 {
 }
 
 h3 {
-	    text-align: center;
-    margin: 350px 0 80px 0;
-    color: #fff;
-    font-size: 65px;
+		text-align: center;
+	margin: 350px 0 80px 0;
+	color: #fff;
+	font-size: 65px;
 }
 h3 a {color: #5a5816}
 
 .button {
-    width: 400px;
-    height: 256px;
-    background-size: cover;
-    display: block;
-    text-decoration: none;
-    position: absolute;
-    top: 55%;
+	width: 400px;
+	height: 256px;
+	background-size: cover;
+	display: block;
+	text-decoration: none;
+	position: absolute;
+	top: 55%;
 }
 .share{
 	background: url(imgs/share.png) 0 0 no-repeat;
@@ -111,34 +123,38 @@ h3 a {color: #5a5816}
 <body>
 	<div class="container">
 
-      <canvas id="canvas">
-        Aww, your browser doesn't support HTML5!
-      </canvas>
+	  <canvas id="canvas">
+		Aww, your browser doesn't support HTML5!
+	  </canvas>
 
-      <div id="mainMenu" onclick="init()">
-        
-        <p class="info">
-          use
-          <span class="key left">←</span>
-          <span class="key right">→</span>
-          to move and space to (re) start...
-        </p>
-      </div>
+	  <div id="mainMenu" onclick="init()">
+		
+		<p class="info">
+		  use
+		  <span class="key left">←</span>
+		  <span class="key right">→</span>
+		  to move and space to (re) start...
+		</p>
+	  </div>
 
-      <div id="gameOverMenu">
-        <h3 id="go_score">you scored 0 points</h3>
-		<img src="imgs/greeta.svg" alt="">
-        <a class="button restart" href="javascript:reset()"></a>
-    	<a class="button share" href="javascript:share()"></a>
-      </div>
+	  <div id="gameOverMenu">
+			<h3 id="go_score">you scored 0 points</h3>
+			<img class="greet" src="imgs/greeta.svg" alt="">
+			<a class="button restart" href="javascript:reset()"></a>
+			<a class="button share" href="javascript:share()"></a>
+	  </div>
+	  <div id="shareMenu" onclick="hideShare()">
+	  请点击右上角分享
+	  		<img src='imgs/arrow.png'/>
+	  </div>
 
 
-      <div id="scoreBoard">
-        <p id="score">0</p>
-      </div>
+	  <div id="scoreBoard">
+		<p id="score">0</p>
+	  </div>
 
-    </div>
-    <script src="jquery-2.1.4.min.js"></script>
-    <script src="copy.js"></script>
+	</div>
+	<script src="jquery-2.1.4.min.js"></script>
+	<script src="index.js"></script>
 </body>
 </html>

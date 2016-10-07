@@ -81,8 +81,8 @@ function drawBg() {
 }
 
 function Player() {
-    this.width = 160;
-    this.height = 160;
+    this.width = 260;
+    this.height = 212;
     this.x = canWidth * 0.5 - this.width * 0.5;
     this.y = this.height * 2;
     this.pic = new Image();
@@ -129,7 +129,7 @@ Player.prototype.move = function (x) {
 };
 
 function Cloud() {
-    this.width = 180;
+    this.width = 280;
     this.height = 60;
     this.x = [];
     this.y = [];
@@ -329,10 +329,11 @@ function monitorCollsion () {
     if(player.orientation == 1){
 
         for (var i = 0; i < cloud.num; i++) {
-            if(cloud.alive[i] && Math.abs(player.y - cloud.y[i]) < 1) {
-                if( cloud.x[i] < player.x && player.x < cloud.x[i] + 180)
+            if(cloud.alive[i] && Math.abs(player.y + 212  - cloud.y[i]) < 1) {
+            if( cloud.x[i] < player.x && player.x + 130 < cloud.x[i] + 180)
                 {
                     player.turn();
+                    console.log(cloud.y + ' ' + player.y);
                 }
 
             }
@@ -342,6 +343,8 @@ function monitorCollsion () {
         cloud.moveDown();
         if(player.y < canHeight - player.height * 2){
             player.turn();
+
+            console.log(cloud.y + ' ' + player.y);
         }
     }
     

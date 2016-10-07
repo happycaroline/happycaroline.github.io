@@ -482,11 +482,11 @@ function showGoMenu() {
   scoreText.innerHTML = "恭喜你获得 " + score + " 株茱萸!";
   var ran = Math.random()
 	if(ran < 0.33){
-		$('.greet').src = 'imgs/greeta.svg';
+		$('.greet')[0].src = 'imgs/greeta.svg';
 	} else if(ran < 0.66) {
-		$('.greet').src = 'imgs/greetb.svg';
+		$('.greet')[0].src = 'imgs/greetb.svg';
 	}  else {
-		$('.greet').src = 'imgs/greetc.svg';
+		$('.greet')[0].src = 'imgs/greetc.svg';
 	}
   
 }

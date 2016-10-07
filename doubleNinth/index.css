@@ -23,3 +23,129 @@ body {
 canvas {
   display: block;
 }
+
+
+.container {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+canvas {
+	display: block;
+	background: url(imgs/bg.jpg);
+	background-size: cover;
+}
+#sprite{
+	display: none;
+}
+
+#scoreBoard {
+	width: 100%;
+	height: 100px;
+	position: absolute;
+	top: -3px;
+	left: 0;
+	z-index: -1;  
+}
+
+#scoreBoard p {
+	font-size: 60px;
+	padding: 0;
+	line-height: 90px;
+	margin: 0 0 0 22px;
+}
+
+#mainMenu{
+	background-image: url(imgs/start.png);
+	background-size: cover;
+}
+
+#mainMenu, #gameOverMenu, #shareMenu {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+
+#shareMenu{
+	text-align: center;
+	font-size: 70px;
+	padding-top: 300px;
+	color: #fff;
+}
+#shareMenu img{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+#gameOverMenu,#shareMenu {
+	visibility: hidden;
+	background-color: rgba(14, 14, 14, 0.38);
+}
+
+#gameOverMenu img{
+	width: 700px;
+}
+h2, h3, h1 {
+	font-weight: normal
+}
+
+
+h3 {
+	text-align: center;
+	margin: 150px 0 80px 0;
+	color: #fff;
+	font-size: 65px;
+}
+h3 a {color: #5a5816}
+
+.button {
+	width: 400px;
+	height: 256px;
+	background-size: cover;
+	display: block;
+	text-decoration: none;
+	position: absolute;
+	top: 50%;
+}
+.share{
+	background: url(imgs/share.png) 0 0 no-repeat;
+	left: 10%;
+}
+.restart{
+	background: url(imgs/restart.png) 0 0 no-repeat;
+	right: 10%;
+}
+
+.QR{
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	display: block;
+	top: 74%;
+}
+#gameOverMenu .QR img{
+	width: 300px;
+}
+
+.QR h2{
+	color: #FFF;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 70px;
+}
+
+.info {    
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	margin: 0;
+	font-size: 40px;
+}
+

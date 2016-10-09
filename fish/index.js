@@ -33,6 +33,9 @@ var wave;
 var feedWave;
 document.body.onload = game;
 
+var dust;
+var dustPic = [];
+
 function game() {
 	init();
 	lastTime = Date.now();
@@ -113,6 +116,13 @@ function init(){
 
 	feedWave = new FeedWave();
 	feedWave.init();
+
+	for (var i = 0; i < 7; i++) {
+		dustPic[i] = new Image();
+		dustPic[i].src = 'src/dust' + i + '.png';
+	}
+	dust = new Dust();
+	dust.init();
 }
 
 function gameloop() {
@@ -138,6 +148,7 @@ function gameloop() {
 	data.draw();
 	wave.draw();
 	feedWave.draw();
+	dust.draw();
 }
 
 
@@ -146,22 +157,30 @@ function drawBg(){
 }
 
 function Ane() {
-	this.x = [];
-	this.len = []
+	//画贝塞尔曲线 start point,control point, end point(sin) 通过正弦函数
+	this.rootX = [];
+	this.headX = [];
+	this.headY = [];
+	this.alpha = 0;
+	this.amp = [];
 }
 
 Ane.prototype.num = 50;
 
 Ane.prototype.init  = function () {
 	for(var i = 0; i < this.num; i++){
-		this.x[i] = i * 16 + Math.random()*20;//[0, 1)
-		this.len[i] = 200 + Math.random() * 50;
+		this.rootX[i] = i * 16 + Math.random()*20;//[0, 1)
+		this.headX[i] = this.rootX[i];
+		this.headY[i] = canHeight - 250 + Math.random() * 50;
+		this.amp[i] = Math.random() * 50;
 	}
 
 	
 }
 
 Ane.prototype.draw = function (){
+	this.alpha += deltaTime * 0.0008;// [-1, 1]
+	var l = Math.sin(this.alpha);
 	ctx2.save();
 	ctx2.strokeStyle = '#3b154e';
 	ctx2.lineCap = 'round';
@@ -170,8 +189,9 @@ Ane.prototype.draw = function (){
 	for(var i = 0; i < this.num; i++){
 		//beginPath, moveTo, lineTo, stroke, strokeStyle,lineWidth, lineCap,globalAlpha
 		ctx2.beginPath();
-		ctx2.moveTo(this.x[i], canHeight)
-		ctx2.lineTo(this.x[i], canHeight - this.len[i]);
+		ctx2.moveTo(this.rootX[i], canHeight);
+		this.headX[i] = this.rootX[i] + l * this.amp[i];
+		ctx2.quadraticCurveTo(this.rootX[i], canHeight - 100, this.headX[i], this.headY[i]);
 
 		ctx2.stroke();
 	}
@@ -187,6 +207,7 @@ function Fruit(){
 	this.fruitType = [];
 	this.orange = new Image();
 	this.blue = new Image();
+	this.aneNo = [];
 }
 
 Fruit.prototype.num = 30;
@@ -198,6 +219,7 @@ Fruit.prototype.init = function(){
 		this.y[i] = 0;
 		this.fruitType[i] = '';
 		this.spd[i] = Math.random() * 0.017 + 0.003; 
+		this.aneNo[i] = 0;
 	}
 	this.orange.src  = 'src/fruit.png';
 	this.blue.src = 'src/blue.png';
@@ -215,6 +237,9 @@ Fruit.prototype.draw = function(){
 				pic = this.blue;
 			}
 			if(this.l[i] <= 14){
+				var NO = this.aneNo[i];
+				this.x[i] = ane.headX[NO];
+				this.y[i] = ane.headY[NO];
 				this.l[i] += this.spd[i] * deltaTime;
 			} else {
 				this.y[i] -= this.spd[i] * 7 * deltaTime;
@@ -230,9 +255,7 @@ Fruit.prototype.draw = function(){
 }
 
 Fruit.prototype.born = function (i) {
-	var aneId = Math.floor(Math.random() * ane.num);
-	this.x[i] = ane.x[aneId];
-	this.y[i] = canHeight - ane.len[aneId];
+	this.aneNo[i] = Math.floor(Math.random() * ane.num);
 	this.l[i] = 0;
 	this.alive[i] = true;
 	var ran = Math.random();
@@ -642,5 +665,36 @@ FeedWave.prototype.born = function (x, y) {
 			this.r[i] = 10;
 			this.alive[i] = true;
 		}
+	}
+}
+
+
+function Dust (){
+	this.x = [];
+	this.y = [];
+	this.amp = [];
+	this.NO = [];
+
+	this.alpha;
+}
+
+Dust.prototype.num = 30;
+
+Dust.prototype.init = function (){
+	for (var i = 0; i < this.num; i++) {
+		this.x[i] = Math.random() * canWidth;
+		this.y[i] = Math.random() * canHeight;
+		this.amp[i] = Math.random() * 15 + 20;
+		this.NO[i] = Math.floor(Math.random() * 7);
+	}
+	this.alpha = 0;
+}
+
+Dust.prototype.draw = function () {
+	this.alpha += deltaTime * 0.0008;
+	var l = Math.sin(this.alpha);
+	for (var i = 0; i < this.num; i++) {
+		var no = this.NO[i];
+		ctx1.drawImage(dustPic[no], this.x[i] + this.amp[i] * l, this.y[i]);
 	}
 }

@@ -1,0 +1,15 @@
+div.content { width: 81%; background-color: transparent; }
+.orderTitle { height: 60px; line-height: 60px; padding-left: 3%; background-color: #FFF; }
+.orderTitle i.blueBtn { width: 110px; height: 40px; line-height: 40px; margin: 0 15px; display: inline-block; }
+.list li { border-top: 1px solid #E3E3E3; border-bottom: 1px solid #E3E3E3; background-color: #FFF; margin-bottom: 8px; color: #999; line-height: 24px; position: relative; padding: 10px 10px 10px 80px; }
+.list li.default:before { width: 35px; height: 35px; content: ''; background-image: url(../img/default-icon-114x114.jpg); display: block; position: absolute; background-size: cover; left: 3%; top: 14%; }
+.list li:after { display: block; content: ''; clear: both; }
+.list .handle b { font-size: 13px; font-weight: normal; display: inline-block; text-align: center; cursor: pointer; color: #265baa; margin-top: 15px; width: 70px; height: 70px; }
+.list .handle b i { background-size: cover; width: 34px; height: 34px; display: block; margin: 0 auto; margin-top: 5px; }
+.list .handle b.default i { background-image: url(../img/add-default-icon-34x34.png); }
+.list .handle b.edit i { background-image: url(../img/add-edit-icon-34x34.png); }
+.list .handle b.del i { background-image: url(../img/add-delete-icon-34x34.png); }
+.list .handle b:hover { background-color: #265baa; color: #FFF; }
+.list .handle b.default:hover i { background-image: url(../img/add-default-icon-34x34-hover.png); }
+.list .handle b.edit:hover i { background-image: url(../img/add-edit-icon-34x34-hover.png); }
+.list .handle b.del:hover i { background-image: url(../img/add-delete-icon-34x34-hover.png); }

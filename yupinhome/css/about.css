@@ -1,0 +1,5 @@
+.part { width: 50%; float: left; padding: 40px; }
+.part img { width: 100%; }
+.part h2 { color: #265baa; text-align: center; font-weight: 400; }
+.part p { color: #7a7a7a; line-height: 1.5; margin: 20px 30px; text-indent: 2em; margin-right: 100px; }
+.banner { background-image: url(../img/titleslider-1680x510.jpg); }

@@ -1,0 +1,27 @@
+header { padding: 20px 3%; margin: 0 auto; background-color: #E1F1FF; border-bottom: 1px solid #ccc; }
+header>div { float: left; width: 10%; }
+header>div>img { width: 100%; max-width: 120px; }
+header .backHome { font-size: 25px; color: #265baa; text-align: center; width: 15%; }
+header .backHome a { font-size: 14px; display: block; border: 1px solid #265baa; padding: 10px; margin: 10px auto 0; max-width: 110px; }
+header .backHome a:hover { background-color: #265baa; color: #FFF; }
+header div.nav { width: 47%; }
+header ul li { float: left; width: 16.66%; text-align: center; line-height: 90px; font-size: 18px; }
+header ul .ico { position: relative; }
+.ico .noicon { line-height: initial; top: -5px; right: -15px; }
+header .rbtnarea { position: initial; width: 28%; padding-top: 20px; }
+header .rbtnarea a { position: relative; font-weight: 600; float: left; padding: 0; }
+header .rbtnarea a .noicon { top: 0; }
+header .searchInput { display: block; height: 50px; line-height: 50px; width: 60%; position: relative; float: left; }
+header .searchInput input { width: 100%; }
+header .search { position: absolute; top: 12%; right: 10px; }
+.main { background-color: #EFEFEF; padding: 2%; }
+.main>div { float: left; margin-right: 1%; background-color: #FFF; border: 1px solid #E3E3E3; height: 632px; }
+.main>div:last-child { margin-right: 0; }
+.main .leftNav { border-color: #265baa; width: 18%; font-size: 14px; }
+.main .leftNav h3 { height: 60px; line-height: 60px; text-align: center; margin: 0; font-weight: normal; font-size: 16px; background-color: #265baa; color: #FFF; }
+.main .leftNav ul { height: 570px; line-height: 35px; background-color: #E1F1FF; padding: 30px; }
+ @media (max-width: 1200px) {
+header .backHome { font-size: 20px; }
+header .backHome a { font-size: 12px; }
+header ul li { font-size: 14px; }
+}

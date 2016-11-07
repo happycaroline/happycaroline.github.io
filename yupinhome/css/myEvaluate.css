@@ -1,0 +1,14 @@
+.main .right{width:81%;}
+.right h3{line-height:60px;padding:0 20px;margin:0;color:#265baa;font-weight:400;}
+.grid table{width:100%;border-width:1px;border-collapse:collapse;background:#fff;}
+.time{color:#646464;margin-right:70px;}
+table td{border-width:1px;border-style:solid;background-color:#ffffff;border-color:#E3E3E3;border-left:none;padding:10px 20px;text-align:center;vertical-align:top;}
+.title td{border:none;border-top:1px solid #E3E3E3;border-bottom:1px solid #E3E3E3;height:40px;text-align:center;text-align:left;padding:10px 20px;}
+.wth55{width:55%;}
+.wth45{width:45%;line-height:35px;}
+table img{border:1px solid #E3E3E3;width:100px;float:left;}
+.wth45 p{float:left;margin-left:15px;color:#646464;width:65%;text-align:left;margin-bottom:-15px;}
+.wth45 span{float:right;}
+.wth55 p{text-align:left;margin-bottom:10px;}
+.stars{float:right;}
+.stars img{width:2em;border:none;}

@@ -1,0 +1,37 @@
+.banner { background-image: url(../img/cat01-titleslider-1680x510.jpg) }
+.textImg { width: 300px; }
+.fastSearch { color: #265baa; text-decoration: none; padding: 0 6px; font-size: 14px; border: 1px solid #265baa; background-color: #fff; height: 52px; line-height: 50px; width: 800px; margin: 20px auto; }
+.fastSearch input { display: inline-block; height: 38px; vertical-align: middle; width: 94%; }
+.filter nav { padding: 0 100px; border-bottom: 1px solid #DDD; }
+.filter a { float: left; margin-right: 5px; margin-bottom: 5px; }
+.filterArrow { float: left; margin: 10px; font-style: normal; margin-top: 0px; color: #265baa; }
+.filter .brand { position: relative; line-height: 22px; border: 1px solid #265baa; font-size: 12px; margin: -5px 5px 5px 0; padding: 2px 26px 2px 4px; cursor: pointer; background: #f3f3f3; color: #265baa; }
+.brand em { font-style: initial; }
+.brand i { display: block; position: absolute; width: 25px; height: 27px; right: 0; top: 0px; padding-top: 2px; font-style: initial; text-align: center; }
+.brand i:hover { background-color: #265baa; color: #fff; }
+.filterRow { position: relative; line-height: 34px; border-bottom: 1px solid #DDD; background: #edf5fb; }
+.filterKey { float: left; width: 100px; padding-left: 20px; white-space: nowrap; overflow: hidden; }
+.filterValue { margin-left: 110px; padding-right: 130px; padding-left: 30px; overflow: hidden; background: #fff; }
+.valueList { float: left; overflow: hidden; position: relative; height: 30px; margin-top: 4px; }
+.valueList li { float: left; margin-right: 50px; margin-bottom: 4px; height: 26px; line-height: 26px; }
+.filterBtn { position: absolute; top: 5px; right: 10px; width: 60px; height: auto; line-height: 22px; overflow: hidden; }
+.multiple { float: left; border: 1px solid #265baa; padding: 0px 3px 0px 18px; position: relative; background: #fff; color: #265baa; }
+.multiple i { display: block; position: absolute; width: 25px; left: -2px; top: 0px; font-style: initial; text-align: center; }
+.multiple:hover, .sort a:hover, .sort .active { background-color: #265baa; color: #fff; }
+.brandList { height: 50px; }
+.brandList a { border: 1px solid#656a6b; width: 114px; color: #005aa0; margin-top: 2px; height: 42px; }
+.brandList a img { width: 100% }
+.brandList li { margin-right: 10px; }
+.sort { text-align: center; margin: 0 auto; width: 300px; }
+.sort a { border: 1px solid #265baa; color: #265baa; margin: 10px -1px; padding: 10px; float: left; padding: 0 10px; height: 35px; line-height: 35px; background: #FFF; width: 100px; cursor: pointer; }
+.grid { border-top: 1px solid #d6d6d6; }
+.grid-item { width: 25%; border: 1px solid #d6d6d6; margin-left: -1px; padding: 30px; border-top: 0; text-align: center; line-height: 1.5; }
+.grid-item img { width: 70%; margin: 0 auto; display: block; }
+.grid .grid-item:nth-child(4n+1) { margin-left: 2px; }
+.name { font-size: 16px; color: #265baa; }
+.price { color: #D90000; font-size: 16px; }
+.btn { width: 200px; background-color: #a9c9e8; color: #fff; line-height: 50px; margin: 10px auto 0; transition: all 150ms linear; cursor: pointer; }
+.btn .btninner { width: 38px; height: 38px; float: left; top: 6px; left: 30px; position: relative; background: url(../img/cart-icon-38x38.png)no-repeat center center; }
+.btn .noicon { position: absolute; top: -2px; right: -4px; background: #d50615; width: 16px; height: 16px; line-height: 14px; font-size: 12px; color: #fff; border-radius: 50%; text-align: center; }
+.btn:hover { background-color: #265baa; }
+.btn:hover .btninner { background: url(../img/cart-icon-38x38-w.png)no-repeat center center; }

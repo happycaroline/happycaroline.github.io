@@ -1,0 +1,12 @@
+body{background-color: #FFF;}
+.main h3 { height: 45px; line-height: 45px; color: #265baa; text-align: center; margin: 0; font-weight: normal; font-size: 16px; border-bottom: 1px solid #E3E3E3; }
+.main>div { float: left; width: 44%; line-height: 35px; font-size: 14px; color: #666; margin-left: 4%; }
+.main>div p { margin-top: 5px; }
+.main>div select, .time input { padding: 5px 10px; height: 40px; width: 100%; border: 1px solid #d0d0d0; }
+.main>div i { color: #F00; }
+.main div.city select { width: 25%; }
+.main>div .time input { width: 63.5%; margin-right: 5%; }
+.main>div .time select { width: 30%; }
+.blueBtn { width: 150px; line-height: 40px; margin: 35px auto; }
+textarea { width: 100%; height: 78px; border: 1px solid #d0d0d0; padding:4px;}
+.mt { margin-top: 15px; }

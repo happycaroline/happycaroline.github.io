@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>御品家-会员中心</title>
+<link type="text/css" rel="stylesheet" href="css/global.css" />
+<link type="text/css" rel="stylesheet" href="css/applyOrder.css" />
+<link rel="stylesheet" href="css/selectize.default.css">
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/manhuaDate.1.0.js"></script>
+<script type="text/javascript" src="js/selectize.min.js"></script>
+</head>
+<body>
+
+<div class="main clearfix">
+	<h3>申请预约</h3>
+	<div class="applyForm">
+		<div>
+			<p>请选择您要预约的项目 <i>*</i></p>
+			<select>
+				<option>预约体验</option>
+				<option>预约体验2</option>
+			</select>
+		</div>
+		<div class="city">
+			<p>请选择您要预约的门店 <i>*</i></p>
+			<select>
+				<option>上海</option>
+				<option>江苏</option>
+			</select> 省
+			<select>
+				<option>上海</option>
+				<option>苏州</option>
+			</select> 市
+			<select>
+				<option>上海</option>
+				<option>苏州</option>
+			</select> 区			
+		</div>
+		<div>
+			<select class="mt">
+				<option>请选择</option>
+				<option>请选择2</option>
+			</select>
+		</div>
+		<div class="time">
+			<p>请选择您要预约的时间 <i>*</i></p>
+			<input type="text" class="orderDate" placeholder="日期">
+			<select>
+				<option>10点</option>
+				<option>11点</option>
+				<option>12点</option>
+			</select>
+		</div>
+	</div>
+	<div>
+		<div>
+			<p>请选择您要预约的商品品牌 (可多选)</p>
+					<label for="input-tags"></label>
+					<input type="text" class="input-tags " value="MABE,REDFYRE">
+		</div>
+		<div>
+			<p>请选择您要预约的商品种类 (可多选)</p>
+			<div class="inp_box_item border-none">
+				<div class="control-group">
+					<label for="input-tags"></label>
+					<input type="text" class="input-tags demo-default" value="">
+				</div>
+			</div>
+		</div>
+		<div>
+			<p>请选择您要预约的商品种类 (可多选)</p>
+			<textarea></textarea>
+		</div>
+	</div>
+</div>
+<div>
+	<div class="blueBtn">提交</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('input.orderDate').manhuaDate({
+		Event: 'click', //可选 
+		Left: 0, //弹出时间停靠的左边位置
+		Top: -16, //弹出时间停靠的顶部边位置
+		fuhao: '-', //日期连接符默认为-
+		isTime: false, //是否开启时间值默认为false
+		beginY: 1949, //年份的开始默认为1949
+		endY: 2100//年份的结束默认为2049
+	});
+	$('.input-tags').selectize({
+		plugins: ['remove_button'],
+		persist: false,
+		create: true
+	});
+});
+</script>
+</body>
+</html>

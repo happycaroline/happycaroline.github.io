@@ -2,7 +2,7 @@
 .main h2 { color: #265baa; text-align: center; font-weight: 400; }
 .main p { color: #a5a5a5; text-align: center; }
 .grid { margin-top: 10px; border-top: 1px solid #c6c6c6; }
-.grid-item { width: 16.66%; border: 1px solid #c6c6c6; border-top: 0; transition: all 150ms linear; margin-left: -1px; display: block; background-color: #fff; }
+.grid-item { width: 16.66%; border: 1px solid #c6c6c6;min-height: 224px; border-top: 0; transition: all 150ms linear; margin-left: -1px; display: block; background-color: #fff; }
 .grid .grid-item:nth-child(6n+1) { margin-left: 5px; }
 .grid-item:hover { background-color: #265baa; }
 .white { display: none }

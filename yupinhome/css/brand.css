@@ -10,7 +10,7 @@
 .grid-item:hover .color { display: none; }
 .grid-item img { width: 100%; }
  @media (max-width: 1200px) {
-.grid-item { width: 33.33%; }
+.grid-item { width: 33.33%;min-height: 333px; }
 .grid .grid-item:nth-child(6n+1) { margin-left: -1px; }
 .grid .grid-item:nth-child(3n+1) { margin-left: 2px; }
 }

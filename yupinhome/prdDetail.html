@@ -59,7 +59,7 @@
 	<div class="top-bar">
 		<div class="left-part">
 			<div class="topinfotext">全国百余家线下门店</div>
-			<div class="topsicon"> <a href="###" class="tsicon"><i class="weibo"></i></a> <a href="###" class="tsicon"><i class="weixin"></i></a> </div>
+			<div class="topsicon"> <u><i class="weibo"></i><div><img src="img/weibo.jpg"><br>关注御品家微博</div></u> <u><i class="weixin"></i><div><img src="img/weixin.jpg"><br>关注御品家微信公众号</div></u> </div>
 		</div>
 		<div class="right-part">
 			<div class="loginarea"> <a href="login.html" class="toptextbtn">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="register.html" class="toptextbtn">免费注册会员</a> </div>
@@ -151,7 +151,7 @@
 		<div class="intro">
 			<h3>BertaZZoni专业系列烤箱 X90 5 MFE X</h3>
 			<p>
-				独立式</br>
+				独立式
 				清晰的线条、完美的比例加上功能与医用完美结合的设计，BertaZZoni
 				独立式的烤箱灶具有多功能电子烤箱和风扇辅助的燃气烤箱可选。更有90cm宽
 				的单体烤箱灶，独特地具备了混合气电烤箱，用燃气或是用电烧烤，任君选择。
@@ -166,7 +166,7 @@
 		        <a class="quantity-decrease J_ping">
 		          <em id="minus">-</em>
 		        </a>
-		        <input type="tel" class="quantity" size="4" value="1" id="number" onblur="modify();">
+		        <input type="tel" class="quantity" size="4" value="1" id="number" onBlur="modify();">
 		        <a class="quantity-increase J_ping"><em id="plus">+</em></a>
 		    </div>
 		    <input type="button" id="add" class="blueBtn" value="添加到购物车" name="">
@@ -383,7 +383,7 @@
 		</div>
 	</div>
 	<div class="bottomright">
-		<div class="siconarea"> <a href="###" class="sicon"><i class="weibo"></i></a> <a href="###" class="sicon"><i class="weixin"></i></a> </div>
+		<div class="siconarea"> <u class="sicon"><i class="weibo"></i><div><img src="img/weibo.jpg"><br>关注御品家微博</div></u> <u class="sicon"><i class="weixin"></i><div><img src="img/weixin.jpg"><br>关注御品家微信公众号</div></u> </div>
 		<div class="hotlinetext">服务热线</div>
 		<div class="hotlinepart">
 			<div class="workday">周一至周日<br />
@@ -404,9 +404,9 @@ $(document).ready(function(){
 	$(window).scroll(function(){
 		var bannerH = $('.banner').height();
 		if($(this).scrollTop() > bannerH){
-			$('.fixnav').show();
+			$('.fixnav').slideDown('slow');
 		} else {
-			$('.fixnav').hide();
+			$('.fixnav').slideUp('slow');
 		}
 	});
 
@@ -418,7 +418,11 @@ $(document).ready(function(){
 		$('.searchInput').hide();
 		$('.trbtn02').fadeIn();
 	});
-
+	
+	$('.grid').packery({
+		itemSelector: '.grid-item',
+		gutter: 0
+	});
 
 	// 图片上下滚动
 	var count = $("#imageMenu li").length - 5; 

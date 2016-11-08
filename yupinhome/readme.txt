@@ -1,13 +1,10 @@
 
-productAll.html, brand.html等页面 里面的 grid在服务器上首次打开页面有问题, 更改一下窗口大小就恢复正常了,  应该是parkey控件调用出现的问题.
-ps: 同样的代码(目测是这样), 在本地打开正常, 放在服务器上 就不可以了.
-http://www.yupinhome.com/brand.html
-http://www.yupinhome.com/productAll.html
-
-账户信息.jpg		last one
-
 
 -----------------------------------------------------
+页面 已经全部写完了, word文档修改的问题,  还有2个问题没有解决;  处理好的 都在序号前标记了一个  红色加粗"OK"
+
+-----------------------------------------------------
+
 
 首页				index.html
 
@@ -49,5 +46,10 @@ http://www.yupinhome.com/productAll.html
 添加修改收货地址.jpg		editAddress.html
 
 在线充值.jpg			onlineRecharge.html
+
+账户信息.jpg			account.html
+
+
+
 
 

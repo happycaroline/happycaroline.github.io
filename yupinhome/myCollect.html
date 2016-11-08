@@ -18,8 +18,8 @@
 			<li><a href="###">账户设置</a></li>
 			<li><a href="###">客服中心</a></li>
 			<li><a href="###" class="ico">消息<span class="noicon">3</span></a></li>
-			<li><a href="###">罗伯特</a></li>
-			<li><a href="###">登出</a></li>
+			<li class="acc lb tr"><a href="###">我的帐号</a></li>
+			<li class="acc"><a href="###">登出</a></li>
 		</ul>
 	</div>
 	<div class="rbtnarea">
@@ -188,7 +188,7 @@
 		</div>
 	</div>
 	<div class="bottomright">
-		<div class="siconarea"> <a href="###" class="sicon"><i class="weibo"></i></a> <a href="###" class="sicon"><i class="weixin"></i></a> </div>
+		<div class="siconarea"> <u class="sicon"><i class="weibo"></i><div><img src="img/weibo.jpg"><br>关注御品家微博</div></u> <u class="sicon"><i class="weixin"></i><div><img src="img/weixin.jpg"><br>关注御品家微信公众号</div></u> </div>
 		<div class="hotlinetext">服务热线</div>
 		<div class="hotlinepart">
 			<div class="workday">周一至周日<br />
@@ -204,17 +204,5 @@
 	</div>
 </footer>
 <!--footer end--> 
-<script type="text/javascript">
-$(document).ready(function(){
-	$(window).scroll(function(){
-		var bannerH = $('header ').height();
-		if($(this).scrollTop() > bannerH){
-			$('.fixnav').show();
-		} else {
-			$('.fixnav').hide();
-		}
-	});
-});
-</script>
 </body>
 </html>

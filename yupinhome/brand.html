@@ -3,10 +3,14 @@
 <head>
 <meta charset="utf-8">
 <title>御品家-关于御品家</title>
+<link type="text/css" rel="stylesheet" href="css/layerslider.css">
 <link type="text/css" rel="stylesheet" href="css/global.css" />
 <link type="text/css" rel="stylesheet" href="css/brand.css" />
 <script src="js/jquery.js" type="text/javascript"></script>
-
+<script src="js/packery.pkgd.min.js" type="text/javascript"></script>
+<script src="js/greensock.js" type="text/javascript"></script>
+<script src="js/layerslider.transitions.js" type="text/javascript"></script>
+<script src="js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
 </head>
 <body>
 <nav class="fixnav navigation"> <img class="preload-me" src="img/header-logo-128x96.png" alt="御品家">
@@ -54,12 +58,37 @@
 			<span class="search"></span> </div>
 	</div>
 </nav>
-<div class="banner"></div>
+<div id="layerslider" class="mainslider" style="width: 100%; height: 620px;"> 
+		<!-- first slide -->
+		<div class="ls-slide" data-ls="transition2d:1;timeshift:-2000;"> 
+			<!-- slide contents goes here --> 
+			<img class="ls-bg" alt="Slide background" src="img/homeslider01.jpg" /> 
+			<!-- image layer --> 
+			<img src="img/slidertext01.png" class="ls-l" alt="Image layer" data-ls="easingin:easeInCirc;offsetyin:100;offsetxin:0;delayin:400; fadein: ture; rotatein: 0;offsetyout:100;" style="left: 50%;top:48%" /> <img src="img/slidertext02.png" class="ls-l" alt="Image layer" data-ls="easingin:easeInCirc;offsetyin:100;offsetxin:0;delayin:800; fadein: ture; rotatein: 0;offsetyout:100;" style="left: 50%;top:55%" /> 
+			<!-- text layer --> 
+			<a href="##" class="ls-l sliderbtn" style="left: 50%;top:65%" data-ls="easingin:easeInCirc;offsetyin:100;offsetxin:0;delayin:1200; fadein: ture; rotatein: 0;offsetyout:100;">当季热卖</a> </div>
+		<!-- second slide -->
+		<div class="ls-slide" data-ls="transition2d:1;timeshift:-4000;"> 
+			<!-- slide contents goes here --> 
+			<img class="ls-bg" alt="Slide background" src="img/homeslider03.jpg" /> 
+			<!-- image layer --> 
+			<img src="img/slidertext01.png" class="ls-l" alt="Image layer" data-ls="easingin:easeInCirc;offsetyin:100;offsetxin:0;delayin:400; fadein: ture; rotatein: 0;offsetyout:100;" style="left: 50%;top:48%" /> <img src="img/slidertext02.png" class="ls-l" alt="Image layer" data-ls="easingin:easeInCirc;offsetyin:100;offsetxin:0;delayin:800; fadein: ture; rotatein: 0;offsetyout:100;" style="left: 50%;top:55%" /> 
+			<!-- text layer --> 
+			<a href="##" class="ls-l sliderbtn" style="left: 50%;top:65%" data-ls="easingin:easeInCirc;offsetyin:100;offsetxin:0;delayin:1200; fadein: ture; rotatein: 0;offsetyout:100;">当季热卖</a> </div>
+		<!-- third slide -->
+		<div class="ls-slide" data-ls="transition2d:1;timeshift:-6000;"> 
+			<!-- slide contents goes here --> 
+			<img class="ls-bg" alt="Slide background" src="img/homeslider04.jpg" /> 
+			<!-- image layer --> 
+			<img src="img/slidertext01.png" class="ls-l" alt="Image layer" data-ls="easingin:easeInCirc;offsetyin:100;offsetxin:0;delayin:400; fadein: ture; rotatein: 0;offsetyout:100;parallaxlevel:1;" style="left: 50%;top:48%" /> <img src="img/slidertext02.png" class="ls-l" alt="Image layer" data-ls="easingin:easeInCirc;offsetyin:100;offsetxin:0;delayin:800; fadein: ture; rotatein: 0;offsetyout:100;parallaxlevel:2;" style="left: 50%;top:55%" /> 
+			<!-- text layer --> 
+			<a href="##" class="ls-l sliderbtn" style="left: 50%;top:65%" data-ls="easingin:easeInCirc;offsetyin:100;offsetxin:0;delayin:1200; fadein: ture; rotatein: 0;offsetyout:100;parallaxlevel:3;">当季热卖</a> </div>
+	</div>
 <header class="header-bar">
 	<div class="top-bar">
 		<div class="left-part">
 			<div class="topinfotext">全国百余家线下门店</div>
-			<div class="topsicon"> <a href="###" class="tsicon"><i class="weibo"></i></a> <a href="###" class="tsicon"><i class="weixin"></i></a> </div>
+			<div class="topsicon"> <u><i class="weibo"></i><div><img src="img/weibo.jpg"><br>关注御品家微博</div></u> <u><i class="weixin"></i><div><img src="img/weixin.jpg"><br>关注御品家微信公众号</div></u> </div>
 		</div>
 		<div class="right-part">
 			<div class="loginarea"> <a href="login.html" class="toptextbtn">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="register.html" class="toptextbtn">免费注册会员</a> </div>
@@ -117,12 +146,11 @@
 			<li class="nav-item"> <a href="###" class="ripple" ><span class="menu-item-text">尊享活动</span></a> </li>
 		</ul>
 	</nav>
-	<div class="textImg"> <img src="img/brand-title-text01-335x35.png" /> <img src="img/brand-title-text02-162x18.png" /> </div>
 </header>
 <div class="main clearfix">
 	<h2>品牌故事</h2>
 	<p>请选择您要了解的品牌</p>
-	<div class="grid clearfix" data-packery='{ "itemSelector": ".grid-item", "gutter": 0 }'> <a class="grid-item" href="###"> <img class="color" src="img/brand-asko-420x420.png" alt=""> <img class="white" src="img/brand-asko-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-ariston-420x420.png" alt=""> <img class="white" src="img/brand-ariston-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-arandt-420x420.png" alt=""> <img class="white" src="img/brand-arandt-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-BERTAZZONI-420x420.png" alt=""> <img class="white" src="img/brand-BERTAZZONI-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-dustie-420x420.png" alt=""> <img class="white" src="img/brand-dustie-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-elica-420x420.png" alt=""> <img class="white" src="img/brand-elica-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-fasflo-420x420.png" alt=""> <img class="white" src="img/brand-fasflo-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-gorenje-420x420.png" alt=""> <img class="white" src="img/brand-gorenje-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-grundig-420x420.png" alt=""> <img class="white" src="img/brand-grundig-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-liebherr-420x420.png" alt=""> <img class="white" src="img/brand-liebherr-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-mabe-420x420.png" alt=""> <img class="white" src="img/brand-mabe-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-mexchef-420x420.png" alt=""> <img class="white" src="img/brand-mexchef-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-redfyre-420x420.png" alt=""> <img class="white" src="img/brand-redfyre-420x420-hover.png" alt=""> </a> </div>
+	<div class="grid" data-packery='{ "itemSelector": ".grid-item", "gutter": 0 }'> <a class="grid-item" href="###"> <img class="color" src="img/brand-asko-420x420.png" alt=""> <img class="white" src="img/brand-asko-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-ariston-420x420.png" alt=""> <img class="white" src="img/brand-ariston-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-arandt-420x420.png" alt=""> <img class="white" src="img/brand-arandt-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-BERTAZZONI-420x420.png" alt=""> <img class="white" src="img/brand-BERTAZZONI-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-dustie-420x420.png" alt=""> <img class="white" src="img/brand-dustie-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-elica-420x420.png" alt=""> <img class="white" src="img/brand-elica-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-fasflo-420x420.png" alt=""> <img class="white" src="img/brand-fasflo-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-gorenje-420x420.png" alt=""> <img class="white" src="img/brand-gorenje-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-grundig-420x420.png" alt=""> <img class="white" src="img/brand-grundig-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-liebherr-420x420.png" alt=""> <img class="white" src="img/brand-liebherr-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-mabe-420x420.png" alt=""> <img class="white" src="img/brand-mabe-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-mexchef-420x420.png" alt=""> <img class="white" src="img/brand-mexchef-420x420-hover.png" alt=""> </a> <a class="grid-item" href="###"> <img class="color" src="img/brand-redfyre-420x420.png" alt=""> <img class="white" src="img/brand-redfyre-420x420-hover.png" alt=""> </a> </div>
 </div>
 
 <!--footer-->
@@ -189,7 +217,7 @@
 		</div>
 	</div>
 	<div class="bottomright">
-		<div class="siconarea"> <a href="###" class="sicon"><i class="weibo"></i></a> <a href="###" class="sicon"><i class="weixin"></i></a> </div>
+		<div class="siconarea"> <u class="sicon"><i class="weibo"></i><div><img src="img/weibo.jpg"><br>关注御品家微博</div></u> <u class="sicon"><i class="weixin"></i><div><img src="img/weixin.jpg"><br>关注御品家微信公众号</div></u> </div>
 		<div class="hotlinetext">服务热线</div>
 		<div class="hotlinepart">
 			<div class="workday">周一至周日<br />
@@ -205,16 +233,19 @@
 	</div>
 </footer>
 <!--footer end--> 
-<script src="js/packery.pkgd.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$(window).scroll(function(){
-		var bannerH = $('.banner').height();
+		var bannerH = $('#layerslider').height();
 		if($(this).scrollTop() > bannerH){
-			$('.fixnav').show();
+			$('.fixnav').slideDown('slow');
 		} else {
-			$('.fixnav').hide();
+			$('.fixnav').slideUp('slow');
 		}
+	});
+	$('#layerslider').layerSlider({
+		firstLayer: 1,
+		skinsPath: 'css/skins/'
 	});
 	
 	$('.trbtn02').click(function(){
@@ -226,6 +257,10 @@ $(document).ready(function(){
 		$('.trbtn02').fadeIn();
 	});
 	
+	$('.grid').packery({
+		itemSelector: '.grid-item',
+		gutter: 0
+	});
 });
 </script>
 </body>

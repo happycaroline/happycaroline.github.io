@@ -5,7 +5,9 @@ header .backHome { font-size: 25px; color: #265baa; text-align: center; width: 1
 header .backHome a { font-size: 14px; display: block; border: 1px solid #265baa; padding: 10px; margin: 10px auto 0; max-width: 110px; }
 header .backHome a:hover { background-color: #265baa; color: #FFF; }
 header div.nav { width: 47%; }
-header ul li { float: left; width: 16.66%; text-align: center; line-height: 90px; font-size: 18px; }
+header ul li { float: left; width: 19%; text-align: center; line-height: 90px; font-size: 18px; }
+header ul li.acc { width:12%; position:relative; font-size:14px; }
+header ul li.lb:before{ content:'';position:absolute; height:25px; width:1px; background-color:#265baa; left:0; top:33px;}
 header ul .ico { position: relative; }
 .ico .noicon { line-height: initial; top: -5px; right: -15px; }
 header .rbtnarea { position: initial; width: 28%; padding-top: 20px; }
@@ -24,4 +26,5 @@ header .search { position: absolute; top: 12%; right: 10px; }
 header .backHome { font-size: 20px; }
 header .backHome a { font-size: 12px; }
 header ul li { font-size: 14px; }
+header ul li.acc { font-size: 12px; }
 }

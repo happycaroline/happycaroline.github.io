@@ -24,6 +24,8 @@
 .brandList li { margin-right: 10px; }
 .sort { text-align: center; margin: 0 auto; width: 300px; }
 .sort a { border: 1px solid #265baa; color: #265baa; margin: 10px -1px; padding: 10px; float: left; padding: 0 10px; height: 35px; line-height: 35px; background: #FFF; width: 100px; cursor: pointer; }
+.sort a i { border: 5px solid transparent; border-top-color: #fff; position: relative; top: 10px; left: 10px; }
+.sort a i.up { border: 5px solid transparent; border-bottom-color: #fff; top: -10px; }
 .grid { border-top: 1px solid #d6d6d6; }
 .grid-item { width: 25%; border: 1px solid #d6d6d6; margin-left: -1px; padding: 30px; border-top: 0; text-align: center; line-height: 1.5; }
 .grid-item img { width: 70%; margin: 0 auto; display: block; }

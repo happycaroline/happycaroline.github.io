@@ -23,3 +23,6 @@
 .service p { text-indent: 2em; line-height: 25px; color: #999; font-size: 13px; padding: 10px 10%; }
 .blueBtn.more { width: 150px; margin: 35px auto; height: 40px; line-height: 40px; font-size: 14px; }
 .service .blueBtn.more { margin: 20px auto; max-width: 150px; width: 60%; }
+@media (max-width: 1200px) {
+	.book .detail{font-size:12px;}
+ }

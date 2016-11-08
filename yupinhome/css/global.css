@@ -160,8 +160,8 @@ footer { display: block; float: left; width: 100%; background: #f0f0f0; padding-
 .ftList a { color: black; }
 .ftList a:hover { color: #265baa; }
 .bottomNav { margin-bottom: 30px; padding: 0 0 0 60px; width: 70%; float: left; }
-a.sicon { float: right; margin-left: 15px; font-size: 30px; color: #265baa; padding: 5px; width: 56px; height: 56px; background: white; border: 1px solid #265baa; display: block; text-align: center; }
-a.sicon:hover { background: #265baa; color: white; }
+u.sicon { float: right; margin-left: 15px; padding: 5px; width: 56px; height: 56px; background: white; border: 1px solid #265baa; display: block; }
+u.sicon:hover { background: #265baa; }
 .siconarea { width: 100%; display: block; position: relative; float: right; }
 .hotlinetext { float: right; margin-top: 15px; font-weight: normal; color: black; }
 .hotlinepart { float: right; width: 100%; display: block; position: relative; }
@@ -177,17 +177,21 @@ a.sicon:hover { background: #265baa; color: white; }
 .right-part { width: 50%; float: right; display: block; text-align: right; margin: 15px 0; }
 .right-part .loginarea { margin-right: 50px; }
 .loginarea { float: right; font-size: 14px; }
-.topsicon { float: left; display: block; margin-left: 25px; position: relative; top: 3px; }
 .topinfotext { font-size: 14px; color: #848484; float: left; display: block; }
 .weibo, .weixin { display: inline-block; background-size: cover; margin-right: 10px; }
 .weibo { background-image: url(../img/footersicon-weibo-56x56.png); }
 .weixin { background-image: url(../img/footersicon-weixin-56x56.png); }
-.topsicon a i { width: 16px; height: 16px; }
+.topsicon { float: left; display: block; margin-left: 25px; position: relative; top: 3px; }
+.topsicon u, .siconarea u { cursor: pointer; position: relative; }
+.topsicon u i { width: 16px; height: 16px; }
+.topsicon u div, .siconarea u div { display: none; position: absolute; left: -100px; z-index: 20; text-align: center; font-size: 14px; background-color: #fff; padding-bottom: 15px; }
+.topsicon u:hover div, .siconarea u:hover div { display: block; }
 .topsicon .weibo:hover { background-image: url(../img/footersicon-weibo-56x56-hover-b.png); }
 .topsicon .weixin:hover { background-image: url(../img/footersicon-weixin-56x56-hover-b.png); }
-.siconarea a i { width: 36px; height: 36px; margin: 5px; }
-.siconarea a:hover .weibo { background-image: url(../img/footersicon-weibo-56x56-hover.png); }
-.siconarea a:hover .weixin { background-image: url(../img/footersicon-weixin-56x56-hover.png); }
+.siconarea u i { width: 36px; height: 36px; margin: 5px; }
+.siconarea u div { left: -150px; top: -295px; }
+.siconarea u:hover .weibo { background-image: url(../img/footersicon-weibo-56x56-hover.png); }
+.siconarea u:hover .weixin { background-image: url(../img/footersicon-weixin-56x56-hover.png); }
 .loginarea a:hover { color: black; }
 .right-part .topinfotext { float: right; margin-right: 10px; }
 .branding { text-align: center; width: 100%; }
@@ -195,7 +199,7 @@ a.sicon:hover { background: #265baa; color: white; }
 .rbtnarea a { display: block; width: 70px; height: 70px; text-align: center; float: right; color: #265baa; text-decoration: none; padding: 6px; font-size: 14px; margin-left: 20px; }
 .rbtnarea a.trbtn01 .btninner { background: url(../img/cart-icon-38x38.png)no-repeat center center; }
 .rbtnarea a.trbtn02 .btninner { background: url(../img/search-icon-38x38.png)no-repeat center center; }
-.btninner { width: 38px; height: 38px; margin: 0 auto; transition: all 150ms linear; }
+.btninner { width: 38px; height: 38px; margin: 0 auto; }
 .rbtnarea a:hover { background: #265baa; color: white; }
 .rbtnarea a.trbtn01:hover .btninner { background: url("../img/cart-icon-38x38-w.png")no-repeat center center; }
 .rbtnarea a.trbtn02:hover .btninner { background: url("../img/search-icon-38x38-w.png")no-repeat center center; }
@@ -213,23 +217,24 @@ a.sicon:hover { background: #265baa; color: white; }
 #primary-menu .nav-item { float: none; display: inline-block; vertical-align: middle; padding: 10px 25px; cursor: pointer; }
 .dropdown-toggle::after { text-decoration: none; display: inline-block; width: 0; height: 0; margin-left: .3em; vertical-align: middle; content: ""; border-top: .3em solid; border-right: .3em solid transparent; border-left: .3em solid transparent; }
 .dropdown-menu { position: absolute; top: 100%; left: 0; z-index: 1000; display: none; float: left; min-width: 160px; padding: 5px 0; margin: 2px 0 0; font-size: 1rem; color: #373a3c; text-align: left; list-style: none; background-color: #fff; -webkit-background-clip: padding-box; background-clip: padding-box; border: 1px solid rgba(0, 0, 0, .15); border-radius: .25rem;
-}
+color: #265baa; }
 #primary-menu .dropdown-menu li { padding: 10px 15px; }
 .dropdown, .dropup { position: relative; }
 #primary-menu { text-align: center; position: relative; padding: 0; margin-top: 20px; }
 #primary-menu .nav-item { float: none; display: inline-block; vertical-align: middle; padding: 10px 25px; cursor: pointer; }
 #primary-menu .nav-item:hover { background: #265baa; }
 #primary-menu .nav-item a { color: #265baa; font-size: 18px; font-weight: bold; }
-#primary-menu .nav-item:hover a { color: white; }
-#primary-menu .nav-item:hover a .dropdown-menu { color: ##265baa; }
+#primary-menu .nav-item:hover>a { color: #FFF; }
+#primary-menu .nav-item:hover a .dropdown-menu { color: #265baa; }
 .navbar-nav .nav-item+.nav-item { margin-left: 0; }
 #primary-menu .dropdown-menu li a { font-size: 16px; font-weight: lighter; width: 100%; padding: 10px 20px; color: #265baa; }
-#primary-menu .dropdown-menu { background: rgba(111, 164, 216, 0.7); width: 11em; }
+#primary-menu .dropdown-menu { width: 11em; background-color: #FFF; }
 #primary-menu .secmenu li { padding: 0; }
 #primary-menu .secmenu li a { display: block; }
-#primary-menu .secmenu li a:hover { background: #265baa; }
+#primary-menu .secmenu li a:hover { background: #265baa; color: #FFF; }
 .dropdown:hover .dropdown-menu { display: block; margin-top: 0; }
 .banner { width: 100%; height: 500px; background-image: url(../img/all-goods-titleslider-1680x510.jpg); background-size: 100% 100%; }
+a.sliderbtn { padding: 15px 70px; color: white; font-size: 20px; background: #265baa; transition: all 150ms linear; }
 /* fixbar */
 .fixnav { position: fixed; z-index: 10; top: 0; margin: 0; background-color: #fff; padding: 15px; display: none; }
 .fixnav img { float: left; width: 80px; }

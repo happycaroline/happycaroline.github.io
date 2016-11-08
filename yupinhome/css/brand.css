@@ -2,15 +2,15 @@
 .main h2 { color: #265baa; text-align: center; font-weight: 400; }
 .main p { color: #a5a5a5; text-align: center; }
 .grid { margin-top: 10px; border-top: 1px solid #c6c6c6; }
-.grid-item { width: 12.5%; border: 1px solid #c6c6c6; border-top: 0; transition: all 150ms linear; margin-left: -1px; display: block; background-color: #fff; }
-.grid .grid-item:nth-child(8n+1) { margin-left: 5px; }
+.grid-item { width: 16.66%; border: 1px solid #c6c6c6; border-top: 0; transition: all 150ms linear; margin-left: -1px; display: block; background-color: #fff; }
+.grid .grid-item:nth-child(6n+1) { margin-left: 5px; }
 .grid-item:hover { background-color: #265baa; }
 .white { display: none }
 .grid-item:hover .white { display: inline-block; }
 .grid-item:hover .color { display: none; }
 .grid-item img { width: 100%; }
  @media (max-width: 1200px) {
-.grid-item { width: 25%; }
-.grid .grid-item:nth-child(8n+1) { margin-left: -1px; }
-.grid .grid-item:nth-child(4n+1) { margin-left: 2px; }
+.grid-item { width: 33.33%; }
+.grid .grid-item:nth-child(6n+1) { margin-left: -1px; }
+.grid .grid-item:nth-child(3n+1) { margin-left: 2px; }
 }

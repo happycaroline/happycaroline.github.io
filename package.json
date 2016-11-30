@@ -31,6 +31,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "gulp-watch-path": "^0.1.0",
+    "less-plugin-clean-css": "^1.5.1",
     "stream-combiner2": "^1.1.1"
   },
   "dependencies": {

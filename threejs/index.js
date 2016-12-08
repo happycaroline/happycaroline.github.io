@@ -1,21 +1,32 @@
 
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 5, 10000);
-var renderer = new THREE.WebGLRenderer();
-renderer.setClearColor(new THREE.Color(0xEEEEEE));
+var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 5, 20000);
+//var renderer = new THREE.WebGLRenderer();
+var renderer = new THREE.WebGLRenderer({
+        antialias:true, 
+        precision:"highp", 
+        alpha:true, 
+        preserveDrawingBuffer:true,
+        maxLights:1 
+    });
+//renderer.setClearColor(new THREE.Color(0xEEEEEE),1);
 
 renderer.setSize(window.innerWidth, window.innerHeight);
-var axes = new THREE.AxisHelper(1000);
+var axes = new THREE.AxisHelper(6000);
 axes.position.set(0,0,0);
 scene.add(axes);
 var controls = new THREE.TrackballControls( camera );
-
+// addImage('img/bg.jpg',10000, 10000, 0, 0,-100)
 addImage('img/cup.png', 159, 489, 300, -300)
 addImage('img/medal.png',627,382, 300, 300)
 addImage('img/camera.png', 481, 410, -300, -300)
 addImage('img/star1.png',121,167, -300, 300)
-//addImage('img/bg.jpg',5689, 2208, 0, 0)
-function addImage(url, w, h,x, y){
+
+addImage('img/cup.png', 159, 489, 600, -600)
+addImage('img/medal.png',627,382, 600, 600)
+addImage('img/camera.png', 481, 410, -600, -600)
+addImage('img/star1.png',121,167, -600, 600)
+function addImage(url, w, h,x, y,z){
         var loader = new THREE.TextureLoader();
         // load a resource
         loader.load(
@@ -29,7 +40,8 @@ function addImage(url, w, h,x, y){
                         // rotate and position the plane
                         plane.position.x = x;
                         plane.position.y = y;
-                        plane.position.z = 0
+                        plane.position.z = z || 0;
+                        
                         plane.rotation.y = 0;
                         plane.rotation.z = 0;
                         scene.add(plane);
@@ -51,41 +63,13 @@ cube.position.x = 0;
 cube.position.y = 0;
 cube.position.z = 0;
 // add the cube to the scene
-scene.add(cube);
+//scene.add(cube);
 
 // position and point the camera to the center of the scene
-camera.position.set(45,0,600);
-camera.lookAt(scene.position);
+camera.position.set(0,0,600);
+//camera.lookAt(scene.position);
+//camera.lookAt(new THREE.Vector3(45,45,600));
 
-var cubeMap = new THREE.CubeTexture( [] );
-cubeMap.format = THREE.RGBFormat;
-var loader = new THREE.ImageLoader();
-loader.load( '0.jpg', function ( image ) {
-
-        var getSide = function ( x, y ) {
-
-                var size = 1024;
-
-                var canvas = document.createElement( 'canvas' );
-                canvas.width = size;
-                canvas.height = size;
-
-                var context = canvas.getContext( '2d' );
-                context.drawImage( image, - x * size, - y * size );
-
-                return canvas;
-
-        };
-
-        cubeMap.images[ 0 ] = getSide( 2, 1 ); // px
-        cubeMap.images[ 1 ] = getSide( 0, 1 ); // nx
-        cubeMap.images[ 2 ] = getSide( 1, 0 ); // py
-        cubeMap.images[ 3 ] = getSide( 1, 2 ); // ny
-        cubeMap.images[ 4 ] = getSide( 1, 1 ); // pz
-        cubeMap.images[ 5 ] = getSide( 3, 1 ); // nz
-        cubeMap.needsUpdate = true;
-
-} );
 
 animate();
 
@@ -93,8 +77,8 @@ function animate() {
 
         requestAnimationFrame( animate );
 
-        document.getElementById('ship').style.transform = 'translate(0, '+ Math.sin(angle) * 2 +'px)'
-        angle += 0.12;
+        //document.getElementById('ship').style.transform = 'translate(0, '+ Math.sin(angle) * 6 +'px)'
+        angle += 0.28;
         controls.update();
         document.body.appendChild(renderer.domElement);
 

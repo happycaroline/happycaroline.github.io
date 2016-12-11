@@ -82,10 +82,10 @@ function step1(){
         e.preventDefault();
         //return false;
     })
-    // var top = -3394;
+    // var top = -6200;
     // var left = -1417;
-    var top = 3089;
-    var left = -7900;
+    var top = 6200;
+    var left = -16000;
     var touchy = 0;
     document.getElementById('step1').addEventListener( 'touchstart', function( event ) {
 

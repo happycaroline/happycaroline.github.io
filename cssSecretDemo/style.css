@@ -1,0 +1,118 @@
+
+body{
+  margin: 0;
+  padding: 0
+}
+.box{
+  width: 33%;
+  height: 150px;
+  float: left;
+  text-align: center;
+}
+.box > div {
+  width: 100px;
+  margin: 0 auto; 
+}
+/* 默认情况下， 背景会延伸到边框所在的区域下层 */
+.transparent-border{
+  background-color: aquamarine;
+  border: 20px solid rgba(255, 88, 88, 0.32);
+  background-clip: content-box;
+
+}
+.multiple-border{
+  background-color: aquamarine;
+  padding: 15px;
+  border: 5px solid #ddd;
+  box-shadow: 0 0 0px 4px red, 0 0 0 9px #ce5252;/*  box-shadow方案 */
+  outline: 2px solid #fff; /* outline方案 可以offset负值 */
+  outline-offset: -11px;
+}
+.background-position{
+  background: url(imgs/heart.png) no-repeat bottom right #ddd;
+  padding: 15px;
+  background-position: right 10px top 4px;
+}
+.background-origin{
+  width: 100px;
+  background: url(imgs/heart.png) no-repeat bottom right #ddd;
+  padding: 15px;
+  background-origin: content-box; 
+}
+.background-calc{
+  width: 100px;
+  background: url(imgs/heart.png) no-repeat bottom right #ddd;
+  padding: 15px;
+  background-position: calc(100% - 10px) center; /* 请不要忘记在calc() 函数 内部的- 和 + 运算符的两侧各加 一个空白符，否则会产生解析错误 */
+}
+.inner-rounding{
+  background: #ddd;
+  padding: 15px;
+  background-position: 100%;
+  border-radius: 5px;
+  border: 3px solid;
+  box-shadow: 0 0 0 5px #e41111; /* 填住缝隙 */
+  outline: 6px solid #e41111;
+}
+.stripe{
+  background: linear-gradient(#fb3 33.3%, #58a 0, #58a 66.6%, yellowgreen 0);
+  padding: 25px;
+  background-size: 100% 25px;
+  color: #fff;
+}
+.vertical-stripe{
+  background: linear-gradient(to right,#fb3 33.3%, #58a 0, #58a 66.6%, yellowgreen 0);
+  padding: 25px;
+  background-size: 25px 100%;
+  color: #fff;
+}
+.free-angle-stripe{
+  background: linear-gradient(45deg,#58a 25%,#fffcfc 0,#fff 50%,#58a 0,#58a 75%, #fff 0);
+  background-size: 30px 30px;
+  padding: 40px;
+}
+.repeating-linear-gradient{
+  background: repeating-linear-gradient(30deg, #79b, #79b 15px, #58a 0, #58a 30px);
+  padding: 30px;
+}
+
+.grid-back{
+  background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 0, 0, 0.48) 50%),linear-gradient(to right,rgba(255, 255, 255, 0) 50%, rgba(255, 0, 0, 0.48) 50%);
+  background-size: 20px 20px;
+  padding: 45px;
+}
+.grid-back-px{
+  background: #58a;
+  padding: 45px;
+  background-image: linear-gradient(#fff 1px, transparent 0),linear-gradient(to right,#fff 1px, transparent 0);
+  background-size: 30px 30px;
+}
+.wave-point{
+    background: red;
+    background-image: radial-gradient(#fff 30%, rgba(255, 0, 0, 0) 0),radial-gradient(#fff 30%, rgba(255, 0, 0, 0) 0);
+    padding: 30px;
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+}
+/* 
+@mixin polka($size, $dot, $base, $accent) { 
+  background: $base; 
+  background-image: radial-gradient($accent $dot, transparent 0), 
+  radial-gradient($accent $dot, transparent 0); 
+  background-size: $size $size; 
+  background-position: 0 0, $size/2 $size/2; }  
+*/
+.check-board{
+  background: #eee;
+  background-image: linear-gradient(45deg, transparent 75%,#bbb 0),linear-gradient(45deg, #bbb 25%, transparent 0),linear-gradient(45deg, transparent 75%,#bbb 0),linear-gradient(45deg, #bbb 25%, transparent 0);
+  background-size: 30px 30px;
+  padding: 60px;
+  background-position: 0 0,15px 15px,15px 15px,30px 30px;
+}
+/* @mixin checkerboard($size, $base, $accent: rgba(0,0,0,.25)) {
+ background: $base; 
+ background-image: linear-gradient(45deg,$accent 25%, transparent 0, transparent 75%, $accent 0), 
+              linear-gradient(45deg, $accent 25%, transparent 0, transparent 75%, $accent 0); 
+ background-position: 0 0, $size $size, 
+ background-size: 2*$size 2*$size; 
+ }  */

@@ -3,15 +3,20 @@ body{
   margin: 0;
   padding: 0
 }
+h2{
+  clear: both;
+}
 .box{
   width: 33%;
   height: 150px;
   float: left;
+  padding: 20px 0;
   text-align: center;
 }
 .box > div {
   width: 100px;
   margin: 0 auto; 
+  padding: 40px 100px;
 }
 /* 默认情况下， 背景会延伸到边框所在的区域下层 */
 .transparent-border{
@@ -22,7 +27,6 @@ body{
 }
 .multiple-border{
   background-color: aquamarine;
-  padding: 15px;
   border: 5px solid #ddd;
   box-shadow: 0 0 0px 4px red, 0 0 0 9px #ce5252;/*  box-shadow方案 */
   outline: 2px solid #fff; /* outline方案 可以offset负值 */
@@ -30,24 +34,18 @@ body{
 }
 .background-position{
   background: url(imgs/heart.png) no-repeat bottom right #ddd;
-  padding: 15px;
   background-position: right 10px top 4px;
 }
 .background-origin{
-  width: 100px;
   background: url(imgs/heart.png) no-repeat bottom right #ddd;
-  padding: 15px;
   background-origin: content-box; 
 }
 .background-calc{
-  width: 100px;
   background: url(imgs/heart.png) no-repeat bottom right #ddd;
-  padding: 15px;
   background-position: calc(100% - 10px) center; /* 请不要忘记在calc() 函数 内部的- 和 + 运算符的两侧各加 一个空白符，否则会产生解析错误 */
 }
 .inner-rounding{
   background: #ddd;
-  padding: 15px;
   background-position: 100%;
   border-radius: 5px;
   border: 3px solid;
@@ -56,43 +54,36 @@ body{
 }
 .stripe{
   background: linear-gradient(#fb3 33.3%, #58a 0, #58a 66.6%, yellowgreen 0);
-  padding: 25px;
   background-size: 100% 25px;
   color: #fff;
 }
 .vertical-stripe{
   background: linear-gradient(to right,#fb3 33.3%, #58a 0, #58a 66.6%, yellowgreen 0);
-  padding: 25px;
   background-size: 25px 100%;
   color: #fff;
 }
 .free-angle-stripe{
   background: linear-gradient(45deg,#58a 25%,#fffcfc 0,#fff 50%,#58a 0,#58a 75%, #fff 0);
   background-size: 30px 30px;
-  padding: 40px;
 }
 .repeating-linear-gradient{
   background: repeating-linear-gradient(30deg, #79b, #79b 15px, #58a 0, #58a 30px);
-  padding: 30px;
 }
 
 .grid-back{
   background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 0, 0, 0.48) 50%),linear-gradient(to right,rgba(255, 255, 255, 0) 50%, rgba(255, 0, 0, 0.48) 50%);
   background-size: 20px 20px;
-  padding: 45px;
 }
 .grid-back-px{
   background: #58a;
-  padding: 45px;
   background-image: linear-gradient(#fff 1px, transparent 0),linear-gradient(to right,#fff 1px, transparent 0);
   background-size: 30px 30px;
 }
 .wave-point{
-    background: red;
-    background-image: radial-gradient(#fff 30%, rgba(255, 0, 0, 0) 0),radial-gradient(#fff 30%, rgba(255, 0, 0, 0) 0);
-    padding: 30px;
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 10px;
+  background: red;
+  background-image: radial-gradient(#fff 30%, rgba(255, 0, 0, 0) 0),radial-gradient(#fff 30%, rgba(255, 0, 0, 0) 0);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
 }
 /* 
 @mixin polka($size, $dot, $base, $accent) { 
@@ -106,7 +97,6 @@ body{
   background: #eee;
   background-image: linear-gradient(45deg, transparent 75%,#bbb 0),linear-gradient(45deg, #bbb 25%, transparent 0),linear-gradient(45deg, transparent 75%,#bbb 0),linear-gradient(45deg, #bbb 25%, transparent 0);
   background-size: 30px 30px;
-  padding: 60px;
   background-position: 0 0,15px 15px,15px 15px,30px 30px;
 }
 /* @mixin checkerboard($size, $base, $accent: rgba(0,0,0,.25)) {
@@ -116,3 +106,101 @@ body{
  background-position: 0 0, $size $size, 
  background-size: 2*$size 2*$size; 
  }  */
+
+
+ .random-back{
+  background-image: linear-gradient(90deg,#ccc100 5px,transparent 0),linear-gradient(90deg,#58a 20px,transparent 0),linear-gradient(90deg,#8BC34A 30px,transparent 0);
+  background-size: 30px 100%,60px 100%,30px 100%;
+ }
+ .background-border{
+  background: linear-gradient(#fff,#fff) padding-box,url(imgs/LightHouse.jpg) border-box 0/cover;
+  border: 10px solid transparent;
+ }
+ .half-ellipse {
+  background: #f5d1d1;
+  border-radius: 100% 0 0 100%/50%;
+ }
+ .parallelograms{
+  position: relative;
+ }
+ .parallelograms:before{
+  content: '';
+  position: absolute;
+  background: #f5d1d1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transform: skew(45deg);
+ }
+
+ .box .diamond{
+    position: relative;
+    height: 100px;
+    padding: 0;
+ }
+.diamond:before{
+  content: '';
+  position: absolute;
+  background: #f5d1d1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  /* transform: rotate(45deg); */
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.bevel-corners-gradients{
+  background: #58a;
+    background: linear-gradient(135deg,  transparent 15px, #58a 0) top left, 
+    linear-gradient(-135deg, transparent 15px, #58a 0) top right, 
+    linear-gradient(-45deg, transparent 15px, #58a 0) bottom right, 
+    linear-gradient(45deg, transparent 15px, #58a 0) bottom left; 
+  background-size: 50% 50%;
+  background-repeat: no-repeat; 
+}
+/* @mixin beveled-corners($bg, $tl:0, $tr:$tl, $br:$tl, $bl:$tr) {
+   background: $bg; 
+   background: linear-gradient(135deg, transparent $tl, $bg 0) top left, 
+   linear-gradient(225deg, transparent $tr, $bg 0) top right, 
+   linear-gradient(-45deg, transparent $br, $bg 0) bottom right, 
+   linear-gradient(45deg, transparent $bl, $bg 0) bottom left; 
+   background-size: 50% 50%; background-repeat: no-repeat; 
+ }  */
+
+ .scoop-corners {
+  background: radial-gradient(circle at top left, transparent 15px, #58a 0) top left, radial-gradient(circle at top right, transparent 15px, #58a 0) top right, radial-gradient(circle at bottom right, transparent 15px, #58a 0) bottom right, radial-gradient(circle at bottom left, transparent 15px, #58a 0) bottom left;
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+ }
+
+ .trapezoid{
+  position: relative;
+ }
+ .trapezoid:before{
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: #58a;
+  top: 0;
+  left: 0;
+  transform: perspective(25px) rotateX(5deg);
+  transform-origin: right;
+ }
+.box>.pie{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  padding: 0;
+  background-color: yellowgreen;
+  background-image: linear-gradient(90deg,transparent 50%, green 0);
+  position: relative;
+}
+.pie:before{
+  content: '';
+  position: absolute;
+
+}

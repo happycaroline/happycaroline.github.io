@@ -197,10 +197,68 @@ h2{
   padding: 0;
   background-color: yellowgreen;
   background-image: linear-gradient(90deg,transparent 50%, green 0);
-  position: relative;
+  overflow: hidden;
 }
 .pie:before{
   content: '';
-  position: absolute;
-
+  display: block;
+  margin-left: 50%;
+  height: 100%;
+  background: yellowgreen;
+  transform-origin: left;
+  transform: rotate(0.6turn);
 }
+.one-side-shadow{
+  background-color: #58a;
+  box-shadow: 0px 8px 5px -5px red;
+}
+.opposite-side-shadow{
+  background-color: #58a;
+  box-shadow: 12px 0px 5px -5px red, -12px 0px 5px -5px red;
+}
+.filter{
+  width: 50%;
+  filter: hue-rotate(5deg) sepia(5) saturate(0);
+}
+
+.mix{
+  background: hsl(335, 100%, 50%); 
+}
+.mix img{
+  mix-blend-mode: luminosity; 
+  width: 50%;
+}
+.tinted-image { 
+  background-size: cover; 
+  background-color: hsl(335, 100%, 50%); 
+  background-blend-mode: luminosity; 
+  transition: .5s background-color;
+} 
+.tinted-image:hover { 
+  background-color: transparent; 
+} 
+
+@keyframes spin { 
+  to { 
+    transform: rotate(1turn); 
+  } 
+} 
+.path {
+  width: 300px; height: 300px;
+  padding: 20px;
+  border-radius: 50%;
+  background: #fb3;
+}
+.box .avatar { 
+  animation: spin 3s infinite linear; 
+  transform-origin: 50% 150px; 
+  width: 100px;
+  height: 100px;
+  /* 150px = 路径的半径 */ 
+} 
+.avatar > img { 
+  width: 50px;
+  height: 50px;
+  animation: inherit; 
+  animation-direction: reverse; 
+} 
